@@ -1,3 +1,4 @@
+import AppIcon from "@/assets/images/app_icon.png";
 import React from "react";
 
 export default function Header() {
@@ -6,7 +7,7 @@ export default function Header() {
             <div className="header-icon-area">
                 <a href="#">
                     <img
-                        src="/images/app_icon.png"
+                        src={AppIcon}
                         alt="App Icon"
                         className="app-icon"
                     ></img>

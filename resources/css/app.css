@@ -3,10 +3,20 @@
 /* app */
 .app {
     background-color: rgba(0, 0, 0, 0.89);
+    height: 100vh;
 }
 
 li {
     list-style: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.link {
+    text-decoration: none;
 }
 
 /* header */
@@ -56,15 +66,55 @@ li {
     padding: 2px;
 }
 
+.app-icon:hover {
+    opacity: 0.5;
+    transition: 0.1s;
+}
+
 .header-app-title {
     font-family: "Dancing Script";
     font-size: 16px;
     font-weight: bold;
     color: rgb(248, 132, 132);
     margin: 0;
+    text-decoration: none;
+}
+
+.header-app-title:hover {
+    cursor: pointer;
+}
+
+/* main area */
+.main-contents-area {
+    width: 100vw;
+    height: calc(100vh - 80px);
+    display: flex;
+    position: absolute;
+}
+
+/* side bar */
+.sidebar-area {
+    background-color: rgb(104, 104, 194);
+    width: 20%;
 }
 
 /* calendar */
+.calendar-area {
+    width: 80%;
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+}
+
+.calendar {
+    height: 100%;
+}
+
+.fc {
+    /* max-height: 700px; */
+    height: 100%;
+    width: 80%;
+}
+
 .fc-day-sat {
     background-color: #cce3f6;
     opacity: 0.7;
@@ -78,4 +128,10 @@ li {
 .fc-daygrid-day-number,
 .fc-daygrid-day-top {
     color: #333;
+}
+
+/* event area */
+.event-area {
+    background-color: #88bbd1;
+    min-height: 20%;
 }

@@ -9,18 +9,14 @@ export default function Calendar() {
     }, []);
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <FullCalendar
-                            plugins={[dayGridPlugin, interactionPlugin]}
-                            initialView="dayGridMonth"
-                            events={[{ title: "地惑BBQ", date: "2024-10-04" }]}
-                            dateClick={handleDateClick}
-                        />
-                    </div>
-                </div>
+        <div className="calendar">
+            <div className="card">
+                <FullCalendar
+                    plugins={[dayGridPlugin, interactionPlugin]}
+                    initialView="dayGridMonth"
+                    events={[{ title: "地惑BBQ", date: "2024-10-04" }]}
+                    dateClick={handleDateClick}
+                />
             </div>
         </div>
     );

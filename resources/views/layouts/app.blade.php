@@ -20,7 +20,7 @@
 
 	<!-- Scripts -->
 	@viteReactRefresh
-	@vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/css/sanitize.css', 'resources/ts/app.tsx'])
+	@vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/ts/app.tsx'])
 </head>
 
 <body>

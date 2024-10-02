@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Header() {
     return (
-        <header className="header">
+        <div className="header">
             <div className="header-icon-area">
                 <a href="#">
                     <img
@@ -12,7 +12,9 @@ export default function Header() {
                         className="app-icon"
                     ></img>
                 </a>
-                <h1 className="header-app-title">My Calendar App</h1>
+                <a href="#" className="link">
+                    <h1 className="header-app-title">My Calendar App</h1>
+                </a>
             </div>
             <nav>
                 <ul className="header-factor-area">
@@ -38,6 +40,6 @@ export default function Header() {
                     </li>
                 </ul>
             </nav>
-        </header>
+        </div>
     );
 }

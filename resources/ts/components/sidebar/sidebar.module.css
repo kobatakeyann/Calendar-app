@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+/* side bar */
+.sidebarArea {
+    background-color: rgb(104, 104, 194);
+    width: 20%;
+}
+
+.text {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}

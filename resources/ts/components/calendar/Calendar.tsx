@@ -1,3 +1,4 @@
+import styles from "@/ts/components/calendar/calendar.module.css";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import FullCalendar from "@fullcalendar/react";
@@ -9,7 +10,7 @@ export default function Calendar() {
     }, []);
 
     return (
-        <div className="calendar">
+        <div className={styles.calendar}>
             <div className="card">
                 <FullCalendar
                     plugins={[dayGridPlugin, interactionPlugin]}

@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+/* main area */
+.mainContentsArea {
+    width: 100vw;
+    height: calc(100vh - 80px);
+    display: flex;
+    position: absolute;
+}
+
+/* calendar */
+.calendarArea {
+    width: 80%;
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+}

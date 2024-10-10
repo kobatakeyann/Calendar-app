@@ -1,18 +1,17 @@
+import styles from "@/ts/pages/home.module.css";
 import React from "react";
 import Calendar from "../components/calendar/Calendar";
 import Event from "../components/calendar/Event";
-import Header from "../components/layout/Header";
-import Sidebar from "../components/layout/Sidebar";
+import Header from "../components/header/Header";
+import Sidebar from "../components/sidebar/Sidebar";
 
 function Home() {
     return (
         <>
-            <header>
-                <Header />
-            </header>
-            <main className="main-contents-area">
+            <Header />
+            <main className={styles.mainContentsArea}>
                 <Sidebar />
-                <div className="calendar-area">
+                <div className={styles.calendarArea}>
                     <Calendar />
                     <Event />
                 </div>

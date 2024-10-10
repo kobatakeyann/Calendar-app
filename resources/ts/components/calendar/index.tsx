@@ -3,6 +3,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import FullCalendar from "@fullcalendar/react";
 import React, { useCallback } from "react";
+import Event from "@/ts/components/calendar/components/Event";
 
 export default function Calendar() {
     const handleDateClick = useCallback((arg: DateClickArg) => {
@@ -11,14 +12,13 @@ export default function Calendar() {
 
     return (
         <div className={styles.calendar}>
-            <div className="card">
-                <FullCalendar
-                    plugins={[dayGridPlugin, interactionPlugin]}
-                    initialView="dayGridMonth"
-                    events={[{ title: "地惑BBQ", date: "2024-10-04" }]}
-                    dateClick={handleDateClick}
-                />
-            </div>
+            <FullCalendar
+                plugins={[dayGridPlugin, interactionPlugin]}
+                initialView="dayGridMonth"
+                events={[{ title: "地惑BBQ", date: "2024-10-04" }]}
+                dateClick={handleDateClick}
+            />
+            <Event />
         </div>
     );
 }

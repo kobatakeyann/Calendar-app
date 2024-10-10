@@ -2,15 +2,21 @@
 
 /* main area */
 .mainContentsArea {
-    width: 100vw;
-    height: calc(100vh - 80px);
+    height: 100vh;
     display: flex;
-    position: absolute;
+    flex-direction: column;
+}
+
+.parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 /* calendar */
 .calendarArea {
-    width: 80%;
-    display: grid;
-    grid-template-rows: 4fr 1fr;
+    min-width: 60%;
+    min-height: 600px;
+    border: 2px solid #000;
 }

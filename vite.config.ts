@@ -1,14 +1,14 @@
-import react from '@vitejs/plugin-react';
-import laravel from 'laravel-vite-plugin';
-import { defineConfig } from 'vite';
+import react from "@vitejs/plugin-react";
+import laravel from "laravel-vite-plugin";
+import { defineConfig } from "vite";
 
 export default defineConfig({
+    resolve: {
+        alias: [{ find: "@", replacement: "/resources" }],
+    },
     plugins: [
         laravel({
-            input: [
-                'resources/sass/app.scss',
-                'resources/ts/app.tsx',
-            ],
+            input: ["resources/sass/app.scss", "resources/ts/app.tsx"],
             refresh: true,
         }),
         react(),

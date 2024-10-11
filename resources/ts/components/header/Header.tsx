@@ -6,15 +6,15 @@ export default function Header() {
     return (
         <header className={styles.header}>
             <div className={styles.headerIconArea}>
-                <a href="#">
+                <a href="#" className={styles.appTitleLink}>
                     <img
                         src={AppIcon}
                         alt="App Icon"
                         className={styles.appIcon}
                     ></img>
                 </a>
-                <a href="#" className={styles.link}>
-                    <h1 className={styles.headerAppTitle}>My Calendar App</h1>
+                <a href="#" className={styles.appTitleLink}>
+                    <p className={styles.headerAppTitle}>My Calendar App</p>
                 </a>
             </div>
             <nav>

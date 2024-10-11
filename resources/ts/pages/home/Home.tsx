@@ -1,15 +1,13 @@
-import styles from "@/ts/pages/home.module.css";
-import React from "react";
 import Calendar from "@/ts/components/calendar";
-import Header from "../components/header/Header";
-// import Sidebar from "../components/sidebar/Sidebar";
+import styles from "@/ts/pages/home/home.module.css";
+import React from "react";
+import Header from "../../components/header/Header";
 
 function Home() {
     return (
         <div className={styles.mainContentsArea}>
             <Header />
             <div className={styles.parent}>
-                <div>sidebar</div>
                 <div className={styles.calendarArea}>
                     <Calendar />
                 </div>

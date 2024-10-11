@@ -1,4 +1,4 @@
-import styles from "@/ts/components/calendar/event.module.css";
+import styles from "@/ts/components/calendar/components/event.module.css";
 import React from "react";
 
 export default function Event() {

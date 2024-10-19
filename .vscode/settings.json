@@ -11,5 +11,12 @@
   "php.inlayHints.parameters.byReference": true,
   "php.inlayHints.types.lambdaParameter": true,
   "blade.format.enable": true,
-  "eslint.useESLintClass": true
+  "eslint.useESLintClass": true,
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  }
 }

@@ -3,6 +3,7 @@ const typescriptPlugin = require("@typescript-eslint/eslint-plugin");
 const typescriptParser = require("@typescript-eslint/parser");
 const reactPlugin = require("eslint-plugin-react");
 const reactRefreshPlugin = require("eslint-plugin-react-refresh");
+const reactHooks = require("eslint-plugin-react-hooks");
 
 module.exports = defineConfig([
   {
@@ -17,6 +18,7 @@ module.exports = defineConfig([
       "@typescript-eslint": typescriptPlugin,
       react: reactPlugin,
       "react-refresh": reactRefreshPlugin,
+      "react-hooks": reactHooks,
     },
     settings: {
       react: {
@@ -39,6 +41,8 @@ module.exports = defineConfig([
         "warn",
         { allowConstantExport: true },
       ],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
     },
   },
 ]);

@@ -1,20 +1,21 @@
 import styles from "@/ts/components/calendar/calendar.module.css";
 import EventDisplay from "@/ts/components/calendar/components/Event";
-import { Event, EventProps } from "@/ts/components/calendar/type";
+import { DateInformation, EventProps } from "@/ts/components/calendar/type";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import FullCalendar from "@fullcalendar/react";
 import React, { useState } from "react";
 
 export default function Calendar(props: EventProps) {
-  const [selectedDateEvent, setSelectedDateEvent] = useState<Event[]>([]);
+  const [selectedDateInfo, setSelectedDateInfo] = useState<DateInformation>({
+    date: "",
+    events: [],
+  });
   const handleDateClick = (arg: DateClickArg) => {
-    const targetDateEvent = props.eventObject.filter(
-      (event) => event.date === arg.dateStr
+    const events = props.eventObject.filter(
+      (event) => event.extendedProps.date === arg.dateStr
     );
-    targetDateEvent
-      ? setSelectedDateEvent(targetDateEvent)
-      : setSelectedDateEvent([]);
+    setSelectedDateInfo({ date: arg.dateStr, events: events });
   };
   return (
     <div className={styles.calendar}>
@@ -23,8 +24,15 @@ export default function Calendar(props: EventProps) {
         initialView="dayGridMonth"
         events={props.eventObject}
         dateClick={handleDateClick}
+        eventDisplay="block"
+        displayEventTime={false}
+        eventTimeFormat={{
+          hour: "numeric",
+          minute: "2-digit",
+          meridiem: false,
+        }}
       />
-      <EventDisplay eventObject={selectedDateEvent} />
+      <EventDisplay {...selectedDateInfo} />
     </div>
   );
 }

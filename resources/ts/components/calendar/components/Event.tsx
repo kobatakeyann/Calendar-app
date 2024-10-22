@@ -1,29 +1,44 @@
+import {
+  getFormattedDate,
+  getFormattedtime,
+} from "@/ts/components/calendar/components/date";
 import styles from "@/ts/components/calendar/components/event.module.css";
-import { EventProps } from "@/ts/components/calendar/type";
-import { formatDate } from "@fullcalendar/core";
+import { DateInformation } from "@/ts/components/calendar/type";
 import React from "react";
 
-export default function EventDisplay(props: EventProps) {
-  const getFormattedDate = (date: string) =>
-    formatDate(date, {
-      month: "long",
-      year: "numeric",
-      day: "numeric",
-      locale: "ja",
-    });
+export default function EventDisplay(props: DateInformation) {
   return (
-    <>
-      <div className={styles.eventArea}>Event area!</div>
+    <div className={styles.eventArea}>
+      <div className={styles.dateArea}>{getFormattedDate(props.date)}</div>
       <ul className={styles.eventList}>
-        {props.eventObject.map((event, index) => (
+        {props.events.map((event, index) => (
           <li
             key={index}
             className={styles.eventItem}
           >
-            {getFormattedDate(event.date)}: {event.title}
+            <div className={styles.timeArea}>
+              {event.allDay ? (
+                <p>終日</p>
+              ) : (
+                <>
+                  <p className={styles.time}>{getFormattedtime(event.start)}</p>
+                  <p className={styles.time}>
+                    {event.end && getFormattedtime(event.end)}
+                  </p>
+                </>
+              )}
+            </div>
+            <div className={styles.eventContent}>
+              <p className={styles.eventName}>{event.title}</p>
+              {event.extendedProps?.description && (
+                <p className={styles.eventDescription}>
+                  {event.extendedProps?.description}
+                </p>
+              )}
+            </div>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

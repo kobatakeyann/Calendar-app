@@ -3,7 +3,7 @@ import { EventProps } from "@/ts/components/calendar/type";
 import { formatDate } from "@fullcalendar/core";
 import React from "react";
 
-export default function EventDisplay(eventObject: EventProps) {
+export default function EventDisplay(props: EventProps) {
   const getFormattedDate = (date: string) =>
     formatDate(date, {
       month: "long",
@@ -15,7 +15,7 @@ export default function EventDisplay(eventObject: EventProps) {
     <>
       <div className={styles.eventArea}>Event area!</div>
       <ul className={styles.eventList}>
-        {eventObject.eventObject.map((event, index) => (
+        {props.eventObject.map((event, index) => (
           <li
             key={index}
             className={styles.eventItem}

@@ -1,18 +1,10 @@
 import styles from "@/ts/components/calendar/calendar.module.css";
 import EventDisplay from "@/ts/components/calendar/components/Event";
+import { Event } from "@/ts/components/calendar/type";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import FullCalendar from "@fullcalendar/react";
 import React, { useState } from "react";
-
-export interface Event {
-  title: string;
-  date: string;
-}
-
-export interface EventProps {
-  eventObject: Event[];
-}
 
 export default function Calendar() {
   const events: Event[] = [

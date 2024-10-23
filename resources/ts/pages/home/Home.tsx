@@ -79,10 +79,8 @@ export default function Home() {
   return (
     <div className={styles.mainContentsArea}>
       <Header />
-      <div className={styles.parent}>
-        <div className={styles.calendarArea}>
-          <Calendar eventObject={events} />
-        </div>
+      <div className={styles.pageContent}>
+        <Calendar eventObject={events} />
       </div>
     </div>
   );

@@ -18,21 +18,25 @@ export default function Calendar(props: EventProps) {
     setSelectedDateInfo({ date: arg.dateStr, events: events });
   };
   return (
-    <div className={styles.calendar}>
-      <FullCalendar
-        plugins={[dayGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
-        events={props.eventObject}
-        dateClick={handleDateClick}
-        eventDisplay="block"
-        displayEventTime={false}
-        eventTimeFormat={{
-          hour: "numeric",
-          minute: "2-digit",
-          meridiem: false,
-        }}
-      />
-      <EventDisplay {...selectedDateInfo} />
+    <div className={styles.calendarArea}>
+      <div className={styles.calendar}>
+        <FullCalendar
+          plugins={[dayGridPlugin, interactionPlugin]}
+          initialView="dayGridMonth"
+          events={props.eventObject}
+          dateClick={handleDateClick}
+          eventDisplay="block"
+          displayEventTime={false}
+          eventTimeFormat={{
+            hour: "numeric",
+            minute: "2-digit",
+            meridiem: false,
+          }}
+        />
+      </div>
+      <div className={styles.event}>
+        <EventDisplay {...selectedDateInfo} />
+      </div>
     </div>
   );
 }

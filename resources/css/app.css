@@ -3,7 +3,6 @@
 /* app */
 .app {
   background-color: rgba(254, 250, 254, 0.989);
-  height: 100vh;
 }
 
 ul {
@@ -30,9 +29,7 @@ body {
 
 /* calendar */
 .fc {
-  /* max-height: 700px; */
-  height: 100%;
-  width: 80%;
+  width: 100%;
 }
 
 .fc-day-sat {

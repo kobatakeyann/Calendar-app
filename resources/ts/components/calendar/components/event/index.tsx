@@ -1,8 +1,8 @@
 import {
   getFormattedDate,
   getFormattedtime,
-} from "@/ts/components/calendar/components/date";
-import styles from "@/ts/components/calendar/components/event.module.css";
+} from "@/ts/components/calendar/components/event/date";
+import styles from "@/ts/components/calendar/components/event/event.module.css";
 import { DateInformation } from "@/ts/components/calendar/type";
 import React from "react";
 

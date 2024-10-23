@@ -16,6 +16,14 @@
   padding: 0 4px;
   border-bottom: rgb(112, 111, 111) 1px solid;
   min-height: 76px;
+  cursor: pointer;
+}
+
+.eventItem:hover {
+  transition: 0.2s;
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.2),
+    -2px -2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .timeArea {

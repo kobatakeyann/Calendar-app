@@ -12,7 +12,7 @@ export default function Calendar(props: EventProps) {
     events: [],
   });
   const handleDateClick = (arg: DateClickArg) => {
-    const events = props.eventObject.filter(
+    const events = props.events.filter(
       (event) => event.extendedProps.date === arg.dateStr
     );
     setSelectedDateInfo({ date: arg.dateStr, events: events });
@@ -23,10 +23,11 @@ export default function Calendar(props: EventProps) {
         <FullCalendar
           plugins={[dayGridPlugin, interactionPlugin]}
           initialView="dayGridMonth"
-          events={props.eventObject}
+          events={props.events}
           dateClick={handleDateClick}
           eventDisplay="block"
           displayEventTime={false}
+          dayMaxEventRows={true}
           eventTimeFormat={{
             hour: "numeric",
             minute: "2-digit",

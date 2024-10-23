@@ -11,6 +11,14 @@ export default function EventDisplay(props: DateInformation) {
     <div className={styles.eventArea}>
       <div className={styles.dateArea}>{getFormattedDate(props.date)}</div>
       <ul className={styles.eventList}>
+        {props.events.length === 0 && (
+          <li className={styles.eventItem}>
+            <div className={styles.timeArea}>
+              <p>終日</p>
+            </div>
+            <p className={styles.eventContent}>予定はありません</p>
+          </li>
+        )}
         {props.events.map((event, index) => (
           <li
             key={index}

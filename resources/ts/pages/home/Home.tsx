@@ -80,7 +80,7 @@ export default function Home() {
     <div className={styles.mainContentsArea}>
       <Header />
       <div className={styles.pageContent}>
-        <Calendar eventObject={events} />
+        <Calendar events={events} />
       </div>
     </div>
   );

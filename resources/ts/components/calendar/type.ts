@@ -10,7 +10,7 @@ export interface Event {
 }
 
 export interface EventProps {
-  eventObject: Event[];
+  events: Event[];
 }
 
 export interface DateInformation {

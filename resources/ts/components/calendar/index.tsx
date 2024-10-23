@@ -7,8 +7,9 @@ import FullCalendar from "@fullcalendar/react";
 import React, { useState } from "react";
 
 export default function Calendar(props: EventProps) {
+  const today = new Date().toISOString();
   const [selectedDateInfo, setSelectedDateInfo] = useState<DateInformation>({
-    date: "",
+    date: today,
     events: [],
   });
   const handleDateClick = (arg: DateClickArg) => {

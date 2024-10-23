@@ -9,7 +9,10 @@ import React from "react";
 export default function EventDisplay(props: DateInformation) {
   return (
     <div className={styles.eventArea}>
-      <div className={styles.dateArea}>{getFormattedDate(props.date)}</div>
+      <div className={styles.barArea}>
+        <p className={styles.date}>{getFormattedDate(props.date)}</p>
+        <button className={styles.addButton}>予定を追加</button>
+      </div>
       <ul className={styles.eventList}>
         {props.events.length === 0 && (
           <li className={styles.eventItem}>

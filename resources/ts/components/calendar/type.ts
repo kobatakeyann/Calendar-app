@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface Event {
   title: string;
   start: string;
@@ -16,4 +18,8 @@ export interface EventProps {
 export interface DateInformation {
   date: string;
   events: Event[];
+}
+
+export interface ModalProps {
+  setIsOpened: Dispatch<SetStateAction<boolean>>;
 }

@@ -3,15 +3,25 @@ import {
   getFormattedtime,
 } from "@/ts/components/calendar/components/event/date";
 import styles from "@/ts/components/calendar/components/event/event.module.css";
+import EventRegistrationModal from "@/ts/components/calendar/components/event_registration_modal";
 import { DateInformation } from "@/ts/components/calendar/type";
-import React from "react";
+import React, { useState } from "react";
 
 export default function EventDisplay(props: DateInformation) {
+  const [isOpened, setIsOpened] = useState<boolean>(false);
+  const handleRegistrationModal = () => {
+    setIsOpened(!isOpened);
+  };
   return (
     <div className={styles.eventArea}>
       <div className={styles.barArea}>
         <p className={styles.date}>{getFormattedDate(props.date)}</p>
-        <button className={styles.addButton}>予定を追加</button>
+        <button
+          onClick={handleRegistrationModal}
+          className={styles.addButton}
+        >
+          予定を追加
+        </button>
       </div>
       <ul className={styles.eventList}>
         {props.events.length === 0 && (
@@ -50,6 +60,7 @@ export default function EventDisplay(props: DateInformation) {
           </li>
         ))}
       </ul>
+      {isOpened && <EventRegistrationModal setIsOpened={setIsOpened} />}
     </div>
   );
 }

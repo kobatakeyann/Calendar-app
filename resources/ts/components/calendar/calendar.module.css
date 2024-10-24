@@ -2,12 +2,11 @@
 
 .calendarArea {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 8px;
-  min-width: 50%;
-  min-height: 600px;
-  border: 2px solid #000;
+  justify-content: space-between;
+  /* align-items: center; */
+  margin-top: 1em;
+  min-width: 90%;
+  /* border: 2px solid #000; */
 }
 
 .calendar {
@@ -15,8 +14,11 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  border: 2px solid #000;
+  flex: 4;
 }
 
 .event {
   width: 100%;
+  flex: 3;
 }

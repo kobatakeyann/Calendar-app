@@ -2,13 +2,12 @@
 
 /* event area */
 .eventArea {
-  width: 100%;
-  min-height: 80px;
+  padding: 0 16px;
 }
 
 /* bar area */
 .barArea {
-  padding: 8px 24px 8px 16px;
+  padding: 12px 16px 12px 16px;
   background-color: #88bbd1;
   display: flex;
   justify-content: space-between;
@@ -21,7 +20,6 @@
 .addButton {
   background-color: #d7b974;
   padding: 4px 8px;
-  width: 11%;
   color: white;
   border: none;
   border-radius: 4px;
@@ -50,7 +48,7 @@
 }
 
 .timeArea {
-  width: 10%;
+  width: 14%;
   margin: 4px 0;
   border-right: #cfbf78 1px solid;
   display: flex;

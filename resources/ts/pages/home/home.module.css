@@ -8,9 +8,8 @@
 
 .pageContent {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
-  margin-top: 80px;
-  height: 90%;
+  padding-top: 80px;
+  min-height: 100vh;
+  box-sizing: border-box;
 }

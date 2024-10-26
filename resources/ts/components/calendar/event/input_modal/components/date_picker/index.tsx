@@ -60,6 +60,13 @@ export default function DatePickers(props: ModalProps) {
           timeCaption="end"
         />
       </div>
+      <div className={styles.switchContainer}>
+        <div className={styles.switchTitle}>終日</div>
+        <label className={styles.switch}>
+          <input type="checkbox" />
+          <span className={styles.slider}></span>
+        </label>
+      </div>
     </Fragment>
   );
 }

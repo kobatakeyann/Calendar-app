@@ -35,6 +35,7 @@ input[type="text"] {
   font: 1em/1.6 sans-serif;
   width: 100%;
   border-bottom: 1px solid #1b2538;
+  box-sizing: border-box;
 }
 
 input[type="text"]:focus {
@@ -49,7 +50,9 @@ input[type="text"]:focus {
 
 /* event date input */
 .dateInput {
-  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* description input */

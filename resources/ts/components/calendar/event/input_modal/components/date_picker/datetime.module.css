@@ -1,0 +1,16 @@
+.datetimePickers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 4;
+}
+
+.symbol {
+  display: inline-block;
+  transform: scaleY(3);
+  color: rgb(210, 212, 215);
+  font-size: 1.5em;
+  text-align: center;
+  flex: 1;
+}

@@ -1,6 +1,12 @@
 import styles from "@/ts/components/calendar/event/input_modal/components/edition/edition.module.css";
 import { ModalProps } from "@/ts/components/calendar/type";
+import { ja } from "date-fns/locale";
 import React, { Fragment } from "react";
+import { registerLocale } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePickers from "../date_picker";
+
+registerLocale("ja", ja);
 
 export default function EventEdition(props: ModalProps) {
   const closeRegistrationModal = () => {
@@ -8,10 +14,6 @@ export default function EventEdition(props: ModalProps) {
   };
   return (
     <Fragment>
-      <div
-        id={styles.overlayer}
-        onClick={closeRegistrationModal}
-      ></div>
       <div
         id={styles.content}
         onClick={(e) => e.stopPropagation()}
@@ -25,19 +27,12 @@ export default function EventEdition(props: ModalProps) {
               className={styles.eventInput}
             ></input>
           </div>
-          <div className={styles.formElement}>
-            <input
-              type="date"
-              className={styles.dateInput}
-            />
-            <input
-              type="date"
-              className={styles.dateInput}
-            />
+          <div className={styles.dateInput}>
+            <DatePickers {...props} />
           </div>
           <div className={styles.formElement}>
             <textarea
-              placeholder="メモを入力"
+              placeholder="メモ"
               rows={3}
               maxLength={50}
               className={styles.descriptionInput}
@@ -46,9 +41,15 @@ export default function EventEdition(props: ModalProps) {
         </form>
         <button
           type="submit"
+          className={styles.deleteButton}
+        >
+          削除
+        </button>
+        <button
+          type="submit"
           className={styles.submitButton}
         >
-          追加
+          決定
         </button>
         <button
           onClick={closeRegistrationModal}

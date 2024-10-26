@@ -1,5 +1,5 @@
 import styles from "@/ts/components/calendar/calendar.module.css";
-import EventDisplay from "@/ts/components/calendar/components/event";
+import EventDisplay from "@/ts/components/calendar/event";
 import { DateInformation, EventProps } from "@/ts/components/calendar/type";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";

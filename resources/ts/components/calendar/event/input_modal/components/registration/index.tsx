@@ -1,17 +1,13 @@
-import styles from "@/ts/components/calendar/components/event_registration_modal/event_registration_modal.module.css";
+import styles from "@/ts/components/calendar/event/input_modal/components/registration/registration.module.css";
 import { ModalProps } from "@/ts/components/calendar/type";
 import React, { Fragment } from "react";
 
-export default function EventRegistrationModal(props: ModalProps) {
+export default function EventRegistration(props: ModalProps) {
   const closeRegistrationModal = () => {
     props.setIsOpened(false);
   };
   return (
     <Fragment>
-      <div
-        id={styles.overlayer}
-        onClick={closeRegistrationModal}
-      ></div>
       <div
         id={styles.content}
         onClick={(e) => e.stopPropagation()}

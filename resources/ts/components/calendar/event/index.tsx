@@ -1,16 +1,22 @@
 import {
   getFormattedDate,
   getFormattedtime,
-} from "@/ts/components/calendar/components/event/date";
-import styles from "@/ts/components/calendar/components/event/event.module.css";
-import EventRegistrationModal from "@/ts/components/calendar/components/event_registration_modal";
+} from "@/ts/components/calendar/event/date";
+import styles from "@/ts/components/calendar/event/event.module.css";
+import EventInputModal from "@/ts/components/calendar/event/input_modal";
 import { DateInformation } from "@/ts/components/calendar/type";
 import React, { useState } from "react";
 
 export default function EventDisplay(props: DateInformation) {
   const [isOpened, setIsOpened] = useState<boolean>(false);
+  const [isNewEvent, setIsNewEvent] = useState<boolean>(true);
   const handleRegistrationModal = () => {
     setIsOpened(!isOpened);
+    setIsNewEvent(true);
+  };
+  const handleEditionModal = () => {
+    setIsOpened(!isOpened);
+    setIsNewEvent(false);
   };
   return (
     <div className={styles.eventArea}>
@@ -25,7 +31,7 @@ export default function EventDisplay(props: DateInformation) {
       </div>
       <ul className={styles.eventList}>
         {props.events.length === 0 && (
-          <li className={styles.eventItem}>
+          <li className={styles.noEventItem}>
             <div className={styles.timeArea}>
               <p>終日</p>
             </div>
@@ -35,6 +41,7 @@ export default function EventDisplay(props: DateInformation) {
         {props.events.map((event, index) => (
           <li
             key={index}
+            onClick={handleEditionModal}
             className={styles.eventItem}
           >
             <div className={styles.timeArea}>
@@ -60,7 +67,13 @@ export default function EventDisplay(props: DateInformation) {
           </li>
         ))}
       </ul>
-      {isOpened && <EventRegistrationModal setIsOpened={setIsOpened} />}
+      {isOpened && (
+        <EventInputModal
+          setIsOpened={setIsOpened}
+          dateInfo={props}
+          isNewEvent={isNewEvent}
+        />
+      )}
     </div>
   );
 }

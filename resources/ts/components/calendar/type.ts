@@ -22,4 +22,6 @@ export interface DateInformation {
 
 export interface ModalProps {
   setIsOpened: Dispatch<SetStateAction<boolean>>;
+  isNewEvent: boolean;
+  dateInfo: DateInformation;
 }

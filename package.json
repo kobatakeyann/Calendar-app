@@ -37,6 +37,7 @@
     "@fullcalendar/interaction": "^6.1.15",
     "@fullcalendar/react": "^6.1.15",
     "eslint-plugin-react": "^7.37.1",
+    "react-datepicker": "^7.5.0",
     "react-router-dom": "^6.26.2"
   }
 }

@@ -11,6 +11,10 @@ registerLocale("ja", ja);
 export default function DatePickers(props: ModalProps) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [isAllday, setIsAllday] = useState(false);
+  const handleIsAllday = () => {
+    setIsAllday(!isAllday);
+  };
   const getDayClassName = (date: Date) => {
     const day = date.getDay();
     if (day === 0) return "sunday";
@@ -27,17 +31,19 @@ export default function DatePickers(props: ModalProps) {
           onChange={(date) => setStartDate(date!)}
           dayClassName={getDayClassName}
         />
-        <DatePicker
-          dateFormat={"HH:mm"}
-          locale={"ja"}
-          selected={startDate}
-          onChange={(date) => setStartDate(date!)}
-          showTimeSelect
-          showTimeSelectOnly
-          timeIntervals={10}
-          timeFormat="HH:mm"
-          timeCaption="start"
-        />
+        {!isAllday && (
+          <DatePicker
+            dateFormat={"HH:mm"}
+            locale={"ja"}
+            selected={startDate}
+            onChange={(date) => setStartDate(date!)}
+            showTimeSelect
+            showTimeSelectOnly
+            timeIntervals={10}
+            timeFormat="HH:mm"
+            timeCaption="start"
+          />
+        )}
       </div>
       <span className={styles.symbol}>{">"}</span>
       <div className={styles.datetimePickers}>
@@ -48,22 +54,27 @@ export default function DatePickers(props: ModalProps) {
           onChange={(date) => setEndDate(date!)}
           dayClassName={getDayClassName}
         />
-        <DatePicker
-          dateFormat={"HH:mm"}
-          locale={"ja"}
-          selected={endDate}
-          onChange={(date) => setEndDate(date!)}
-          showTimeSelect
-          showTimeSelectOnly
-          timeIntervals={10}
-          timeFormat="HH:mm"
-          timeCaption="end"
-        />
+        {!isAllday && (
+          <DatePicker
+            dateFormat={"HH:mm"}
+            locale={"ja"}
+            selected={endDate}
+            onChange={(date) => setEndDate(date!)}
+            showTimeSelect
+            showTimeSelectOnly
+            timeIntervals={10}
+            timeFormat="HH:mm"
+            timeCaption="end"
+          />
+        )}
       </div>
       <div className={styles.switchContainer}>
         <div className={styles.switchTitle}>終日</div>
         <label className={styles.switch}>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={handleIsAllday}
+          />
           <span className={styles.slider}></span>
         </label>
       </div>

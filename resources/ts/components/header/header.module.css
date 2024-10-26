@@ -1,73 +1,76 @@
 @charset "utf-8";
 
 .header {
-    display: flex;
-    width: 100vw;
-    height: 80px;
-    align-items: center;
-    background: linear-gradient(to right, #564a9ab7, #a674e8);
-    gap: 24px;
-    padding-left: 12px;
+  display: flex;
+  width: 100%;
+  height: 80px;
+  align-items: center;
+  /* background: linear-gradient(to right, #564a9ab7, #a674e8); */
+  background: #a674e8;
+  gap: 24px;
+  padding-left: 12px;
+  position: fixed;
+  z-index: 1000;
 }
 
 .headerIconArea {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 12px;
 }
 
 .headerFactorArea {
-    display: flex;
-    gap: 32px;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
 }
 
 .headerText {
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    margin: 0px;
-    padding: 0px;
-    text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
 }
 
 .headerText:hover {
-    cursor: pointer;
-    color: #444654;
-    transition: 0.2s;
+  cursor: pointer;
+  color: #444654;
+  transition: 0.2s;
 }
 
 .appIcon {
-    width: 56px;
-    height: 56px;
-    border-radius: 28px;
-    margin-top: 4px;
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  margin-top: 4px;
 }
 
 .appIcon:hover {
-    opacity: 0.5;
-    transition: 0.1s;
+  opacity: 0.5;
+  transition: 0.1s;
 }
 
 .appTitleLink {
-    display: block;
-    text-decoration: none;
-    height: 75%;
+  display: block;
+  text-decoration: none;
+  height: 75%;
 }
 
 .headerAppTitle {
-    font-family: "Dancing Script";
-    font-size: 16px;
-    font-weight: bold;
-    color: rgb(248, 132, 132);
-    margin: 0;
-    text-decoration: none;
+  font-family: "Dancing Script";
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(248, 132, 132);
+  margin: 0;
+  text-decoration: none;
 }
 
 .headerAppTitle:hover {
-    cursor: pointer;
+  cursor: pointer;
 }

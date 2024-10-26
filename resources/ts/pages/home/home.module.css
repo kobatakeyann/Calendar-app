@@ -2,21 +2,14 @@
 
 /* main area */
 .mainContentsArea {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.parent {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-/* calendar */
-.calendarArea {
-    min-width: 60%;
-    min-height: 600px;
-    border: 2px solid #000;
+.pageContent {
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+  min-height: 100vh;
+  box-sizing: border-box;
 }

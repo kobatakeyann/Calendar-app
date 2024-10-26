@@ -2,41 +2,60 @@
 
 /* app */
 .app {
-    background-color: rgba(254, 250, 254, 0.989);
-    height: 100vh;
+  background-color: rgba(254, 250, 254, 0.989);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 .flex {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .link {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
 }
 
 /* calendar */
+.fc .fc-toolbar.fc-header-toolbar {
+  padding: 8px 16px;
+  background-color: rgb(35, 34, 32);
+  margin: 0;
+  color: rgb(218, 178, 155);
+  font-family: dancing script;
+}
+
 .fc {
-    /* max-height: 700px; */
-    height: 100%;
-    width: 80%;
+  width: 100%;
+  min-height: 95%;
 }
 
 .fc-day-sat {
-    background-color: #cce3f6;
-    opacity: 0.7;
+  background-color: #cce3f6;
+  opacity: 0.7;
 }
 .fc-day-sun {
-    background-color: #f4d0df;
-    opacity: 0.8;
+  background-color: #f4d0df;
+  opacity: 0.8;
 }
 
 .fc-col-header-cell-cushion,
 .fc-daygrid-day-number,
 .fc-daygrid-day-top {
-    color: #333;
+  color: #333;
 }

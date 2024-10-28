@@ -1,0 +1,4 @@
+GET http://127.0.0.1:8000
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer T0zCmQTMB6bgz4F0o1fbhiPFFw1BKamyr1GA537P02139e45

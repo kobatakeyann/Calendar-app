@@ -3,63 +3,63 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Http\Requests\EventRequest;
+use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function getAllEvents(Request $request): JsonResponse
     {
-        //
+        $events = Event::where('user_id', $request->user()->id)->get();
+        return response()->json($events);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(EventRequest $request): JsonResponse
     {
-        //
+        $event = new Event($request->validated());
+        $event->user_id = $request->user()->id;
+        $event->save();
+        return response()->json($event, 201);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function show($id): JsonResponse
     {
-        //
+        $event = Event::where('id', $id)->where('user_id', request()->user()->id)->firstOrFail();
+        return response()->json($event);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Event $event)
+    public function update(EventRequest $request, $id): JsonResponse
     {
-        //
+        $event = Event::where('id', $id)->where('user_id', request()->user()->id)->firstOrFail();
+        $event->update($request->validated());
+        return response()->json($event, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Event $event)
+    public function destroy($id): JsonResponse
     {
-        //
+        $event = Event::where('id', $id)->where('user_id', request()->user()->id)->firstOrFail();
+        $event->delete();
+        return response()->json(['message' => "Event Successfully deleted"], 204);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Event $event)
+    public function getEventsOnDate(Request $request): JsonResponse
     {
-        //
-    }
+        $date = $request->query('date');
+        $startOfDay = Carbon::parse($date)->startOfDay();
+        $endOfDay = Carbon::parse($date)->endOfDay();
+        $events = Event::where('user_id', request()->user()->id)
+            ->where(function ($query) use ($startOfDay, $endOfDay) {
+                $query->whereBetween('start', [$startOfDay, $endOfDay])
+                    ->orWhereBetween('end', [$startOfDay, $endOfDay])
+                    ->orWhere(function ($query) use ($startOfDay, $endOfDay) {
+                        $query->where('start', '<=', $startOfDay)
+                            ->where('end', '>=', $endOfDay);
+                    });
+            })
+            ->get();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Event $event)
-    {
-        //
+        return response()->json($events);
     }
 }

@@ -9,7 +9,7 @@
 1. 拡張機能のインストール<br>
    `PHP Server`<br>
    `PHP Intelephense`
-2. .env ファイルの設定<br>
+2. 環境変数の設定<br>
    ・ `.env`ファイルの作成
    ```
    cp .env.example .env
@@ -22,7 +22,7 @@
    ```
    php artisan config:clear
    ```
-   ・ `.env`内で`SESSION_DRIVER=array`とする
+   ・ `.env`内で、`DB_CONNECTION=mysql`, `SESSION_DRIVER=array`とする
 3. PHP ライブラリのインストール
    ```
    composer install

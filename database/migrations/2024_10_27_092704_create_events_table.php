@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->dateTime('start');
             $table->dateTime('end');
-            $table->boolean('is_all_day')->default(false);
+            $table->boolean('is_allday')->default(false);
             $table->text('description')->nullable();
             $table->string('location')->nullable();
             $table->string('color', 7);

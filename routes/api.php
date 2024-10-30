@@ -9,8 +9,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::get('/events', [EventController::class, 'getAllEvents']);
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/events', [EventController::class, 'getAllEvents']);
     Route::post('/events', [EventController::class, 'store']);
     Route::get('/events/{id}', [EventController::class, 'show']);
     Route::put('/events/{id}', [EventController::class, 'update']);

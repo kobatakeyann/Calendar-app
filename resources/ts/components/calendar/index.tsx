@@ -86,21 +86,41 @@ export default function Calendar() {
   });
   const [events, setEvents] = useState<Event[]>([]);
   useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const response = await axios.get("/api/events", {
-          headers: {
-            "X-XSRF-TOKEN": document.cookie.match(/XSRF-TOKEN=([^;]+)/)![1],
-          },
-        });
-        setEvents(response.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchEvents();
+    // CSRFトークンを取得
+    axios.defaults.withCredentials = true;
+    axios
+      .get("/sanctum/csrf-cookie")
+      .then((response) => {
+        axios
+          .get("/api/events", {
+            headers: {
+              "X-XSRF-TOKEN": getXSRFToken(),
+            },
+          })
+          .then((apiResponse) => {
+            console.log("API response:", apiResponse.data);
+          })
+          .catch((error) => {
+            console.error("API request error:", error);
+          });
+      })
+      .catch((error) => {
+        console.error("CSRF token request error:", error);
+      });
   }, []);
+
+  function getXSRFToken(): string {
+    const name = "XSRF-TOKEN=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const cookies = decodedCookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i].trim();
+      if (cookie.indexOf(name) === 0) {
+        return cookie.substring(name.length, cookie.length);
+      }
+    }
+    return "";
+  }
   const handleDateClick = (arg: DateClickArg) => {
     const tagergetEvents = events.filter(
       (event) => event.extendedProps.date === arg.dateStr

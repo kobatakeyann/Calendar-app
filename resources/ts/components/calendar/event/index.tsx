@@ -10,13 +10,15 @@ import React, { useState } from "react";
 export default function EventDisplay(props: DateInformation) {
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [isNewEvent, setIsNewEvent] = useState<boolean>(true);
+  const [targetEventId, setTargetEventId] = useState<string>("");
   const handleRegistrationModal = () => {
     setIsOpened(!isOpened);
     setIsNewEvent(true);
   };
-  const handleEditionModal = () => {
+  const handleEditModal = (id: string) => {
     setIsOpened(!isOpened);
     setIsNewEvent(false);
+    setTargetEventId(id);
   };
   return (
     <div className={styles.eventArea}>
@@ -38,14 +40,16 @@ export default function EventDisplay(props: DateInformation) {
             <p className={styles.eventContent}>予定はありません</p>
           </li>
         )}
-        {props.events.map((event, index) => (
+        {props.events.map((event) => (
           <li
-            key={index}
-            onClick={handleEditionModal}
+            key={event.id}
+            onClick={() => {
+              handleEditModal(event.id);
+            }}
             className={styles.eventItem}
           >
             <div className={styles.timeArea}>
-              {event.allDay ? (
+              {event.isallday ? (
                 <p>終日</p>
               ) : (
                 <>
@@ -58,10 +62,8 @@ export default function EventDisplay(props: DateInformation) {
             </div>
             <div className={styles.eventContent}>
               <p className={styles.eventName}>{event.title}</p>
-              {event.extendedProps?.description && (
-                <p className={styles.eventDescription}>
-                  {event.extendedProps?.description}
-                </p>
+              {event.description && (
+                <p className={styles.eventDescription}>{event.description}</p>
               )}
             </div>
           </li>
@@ -72,6 +74,7 @@ export default function EventDisplay(props: DateInformation) {
           setIsOpened={setIsOpened}
           dateInfo={props}
           isNewEvent={isNewEvent}
+          eventId={targetEventId}
         />
       )}
     </div>

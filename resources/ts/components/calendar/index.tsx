@@ -1,82 +1,20 @@
 import styles from "@/ts/components/calendar/calendar.module.css";
 import EventDisplay from "@/ts/components/calendar/event";
-import { DateInformation, Event } from "@/ts/components/calendar/type";
+import {
+  DateInformation,
+  Event,
+  FetchContextType,
+} from "@/ts/components/calendar/type";
+import { fetchData } from "@/ts/services/api/apiRequest";
+import { formatEvents } from "@/ts/services/api/eventService";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import FullCalendar from "@fullcalendar/react";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
-// const events: Event[] = [
-//   {
-//     title: "地惑BBQ",
-//     start: "2024-10-04T17:00:00",
-//     end: "2024-10-04T20:00:00",
-//     allDay: false,
-//     extendedProps: {
-//       date: "2024-10-04",
-//       description: "キャンパスコモンで15時から準備する",
-//     },
-//   },
-//   {
-//     title: "履修登録",
-//     start: "2024-10-07",
-//     allDay: true,
-//     extendedProps: {
-//       date: "2024-10-07",
-//       description: "リサーチレビューも忘れないように登録する",
-//     },
-//   },
-//   {
-//     title: "夏休みお疲れ会",
-//     start: "2024-10-18T19:00:00",
-//     end: "2024-10-18T22:00:00",
-//     allDay: false,
-//     extendedProps: {
-//       date: "2024-10-18",
-//       // description: "バルお店予約する",
-//     },
-//   },
-//   {
-//     title: "おでん",
-//     start: "2024-10-22T19:00:00",
-//     allDay: false,
-//     end: "2024-10-22T22:00:00",
-//     extendedProps: {
-//       date: "2024-10-22",
-//       description: "天神に19時に着くバスに乗る",
-//     },
-//   },
-//   {
-//     title: "AtCoder",
-//     start: "2024-10-26T21:00:00",
-//     allDay: false,
-//     end: "2024-10-26T22:40:00",
-//     extendedProps: {
-//       date: "2024-10-26",
-//       description: "今週はちゃんと専念する",
-//     },
-//   },
-//   {
-//     title: "Holton",
-//     start: "2024-10-18T13:00:00",
-//     allDay: false,
-//     end: "2024-10-18T15:00:00",
-//     extendedProps: {
-//       date: "2024-10-18",
-//       description: "後期１回目",
-//     },
-//   },
-//   {
-//     title: "せいま colloquium",
-//     start: "2024-10-29",
-//     allDay: true,
-//     extendedProps: {
-//       date: "2024-10-29",
-//       description: "あと1週間で発表スライドをまとめる",
-//     },
-//   },
-// ];
+export const FetchContext = createContext<FetchContextType | undefined>(
+  undefined
+);
 
 export default function Calendar() {
   const today = new Date().toISOString();
@@ -85,47 +23,32 @@ export default function Calendar() {
     events: [],
   });
   const [events, setEvents] = useState<Event[]>([]);
-  useEffect(() => {
-    // CSRFトークンを取得
-    axios.defaults.withCredentials = true;
-    axios
-      .get("/sanctum/csrf-cookie")
-      .then((response) => {
-        axios
-          .get("/api/events", {
-            headers: {
-              "X-XSRF-TOKEN": getXSRFToken(),
-            },
-          })
-          .then((apiResponse) => {
-            console.log("API response:", apiResponse.data);
-          })
-          .catch((error) => {
-            console.error("API request error:", error);
-          });
-      })
-      .catch((error) => {
-        console.error("CSRF token request error:", error);
-      });
-  }, []);
-
-  function getXSRFToken(): string {
-    const name = "XSRF-TOKEN=";
-    const decodedCookie = decodeURIComponent(document.cookie);
-    const cookies = decodedCookie.split(";");
-    for (let i = 0; i < cookies.length; i++) {
-      let cookie = cookies[i].trim();
-      if (cookie.indexOf(name) === 0) {
-        return cookie.substring(name.length, cookie.length);
-      }
+  const [shouldFetch, setShouldFetch] = useState<boolean>(true);
+  const fetchEvents = async () => {
+    try {
+      const response = await fetchData<Event[]>("/api/events");
+      setEvents(response);
+    } catch (error) {
+      console.log("API request error:", error);
+    } finally {
+      setShouldFetch(false);
     }
-    return "";
-  }
-  const handleDateClick = (arg: DateClickArg) => {
-    const tagergetEvents = events.filter(
-      (event) => event.extendedProps.date === arg.dateStr
-    );
-    setSelectedDateInfo({ date: arg.dateStr, events: tagergetEvents });
+  };
+  useEffect(() => {
+    if (shouldFetch) {
+      fetchEvents();
+    }
+  }, [shouldFetch]);
+
+  const handleDateClick = async (arg: DateClickArg) => {
+    try {
+      const response = await fetchData<Event[]>(
+        `/api/events/on-date?date=${arg.dateStr}`
+      );
+      setSelectedDateInfo({ date: arg.dateStr, events: response });
+    } catch (error) {
+      console.log("API request error:", error);
+    }
   };
 
   return (
@@ -134,7 +57,7 @@ export default function Calendar() {
         <FullCalendar
           plugins={[dayGridPlugin, interactionPlugin]}
           initialView="dayGridMonth"
-          events={events}
+          events={formatEvents(events)}
           dateClick={handleDateClick}
           eventDisplay="block"
           displayEventTime={false}
@@ -146,9 +69,11 @@ export default function Calendar() {
           }}
         />
       </div>
-      <div className={styles.event}>
-        <EventDisplay {...selectedDateInfo} />
-      </div>
+      <FetchContext.Provider value={{ shouldFetch, setShouldFetch }}>
+        <div className={styles.event}>
+          <EventDisplay {...selectedDateInfo} />
+        </div>
+      </FetchContext.Provider>
     </div>
   );
 }

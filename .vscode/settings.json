@@ -10,7 +10,6 @@
   "php.inlayHints.parameters.enabled": false,
   "php.inlayHints.parameters.byReference": true,
   "php.inlayHints.types.lambdaParameter": true,
-  "blade.format.enable": true,
   "eslint.useESLintClass": true,
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "editor.codeActionsOnSave": {
@@ -18,5 +17,9 @@
   },
   "editor.quickSuggestions": {
     "strings": true
-  }
+  },
+  "blade.format.enable": true,
+  "bladeFormatter.format.indentSize": 2,
+  "bladeFormatter.format.useTabs": false,
+  "bladeFormatter.format.indentInnerHtml": false
 }

@@ -1,6 +1,9 @@
 import "@/ts/components/calendar/event/input_modal/components/date_picker/datepicker.css";
 import styles from "@/ts/components/calendar/event/input_modal/components/date_picker/datetime.module.css";
-import { ModalProps } from "@/ts/components/calendar/type";
+import {
+  EditModalProps,
+  RegistrationModalProps,
+} from "@/ts/components/calendar/type";
 import { ja } from "date-fns/locale";
 import React, { Fragment, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
@@ -8,9 +11,26 @@ import "react-datepicker/dist/react-datepicker.css";
 
 registerLocale("ja", ja);
 
-export default function DatePickers(props: ModalProps) {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+export default function DatePickers(
+  props: RegistrationModalProps | EditModalProps
+) {
+  const getStartDatetime = () => {
+    if ("event" in props) {
+      return props.event.start;
+    }
+    return props.date;
+  };
+  const getEndDatetime = () => {
+    if ("event" in props) {
+      return props.event.end;
+    }
+    return props.date;
+  };
+  const stringToDate = (date: string) => {
+    return new Date(date);
+  };
+  const [startDate, setStartDate] = useState(stringToDate(getStartDatetime()));
+  const [endDate, setEndDate] = useState(stringToDate(getEndDatetime()));
   const [isAllday, setIsAllday] = useState(false);
   const handleIsAllday = () => {
     setIsAllday(!isAllday);

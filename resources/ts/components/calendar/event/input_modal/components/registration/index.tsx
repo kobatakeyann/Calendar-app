@@ -1,5 +1,5 @@
 import styles from "@/ts/components/calendar/event/input_modal/components/registration/registration.module.css";
-import { ModalProps } from "@/ts/components/calendar/type";
+import { RegistrationModalProps } from "@/ts/components/calendar/type";
 import { ja } from "date-fns/locale";
 import React, { Fragment } from "react";
 import { registerLocale } from "react-datepicker";
@@ -8,7 +8,7 @@ import DatePickers from "../date_picker";
 
 registerLocale("ja", ja);
 
-export default function EventRegistration(props: ModalProps) {
+export default function EventRegistration(props: RegistrationModalProps) {
   const closeRegistrationModal = () => {
     props.setIsOpened(false);
   };

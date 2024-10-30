@@ -8,6 +8,7 @@ export default function EventInputModal(props: ModalProps) {
   const closeRegistrationModal = () => {
     props.setIsOpened(false);
   };
+  console.log(props);
   return (
     <Fragment>
       <div
@@ -15,9 +16,20 @@ export default function EventInputModal(props: ModalProps) {
         onClick={closeRegistrationModal}
       ></div>
       {props.isNewEvent ? (
-        <EventRegistration {...props} />
+        <EventRegistration
+          date={props.dateInfo.date}
+          setIsOpened={props.setIsOpened}
+          isNewEvent={true}
+        />
       ) : (
-        <EventEdition {...props} />
+        <EventEdition
+          date={props.dateInfo.date}
+          setIsOpened={props.setIsOpened}
+          isNewEvent={false}
+          event={
+            props.dateInfo.events.find((event) => event.id === props.eventId)!
+          }
+        />
       )}
       ;
     </Fragment>

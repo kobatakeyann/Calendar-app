@@ -1,14 +1,15 @@
 import { Dispatch, SetStateAction } from "react";
 
 export interface Event {
+  id: string;
   title: string;
   start: string;
-  allDay: boolean;
-  end?: string;
-  extendedProps: {
-    date: string;
-    description?: string;
-  };
+  end: string;
+  isallday: boolean;
+  color: string;
+  location?: string;
+  description?: string;
+  userId: string;
 }
 
 export interface EventProps {
@@ -24,4 +25,23 @@ export interface ModalProps {
   setIsOpened: Dispatch<SetStateAction<boolean>>;
   isNewEvent: boolean;
   dateInfo: DateInformation;
+  eventId?: string;
 }
+
+export interface RegistrationModalProps {
+  setIsOpened: Dispatch<SetStateAction<boolean>>;
+  isNewEvent: boolean;
+  date: string;
+}
+
+export interface EditModalProps {
+  setIsOpened: Dispatch<SetStateAction<boolean>>;
+  isNewEvent: boolean;
+  date: string;
+  event: Event;
+}
+
+export type FetchContextType = {
+  shouldFetch: boolean;
+  setShouldFetch: Dispatch<SetStateAction<boolean>>;
+};

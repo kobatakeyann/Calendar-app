@@ -28,7 +28,7 @@ class EventRequest extends FormRequest
             'is_all_day' => 'boolean',
             'description' => 'nullable|string',
             'location' => 'nullable|string|max:255',
-            'color' => 'required|string|size:7|regex:/^#[0-9A-Fa-f]{6}$/',
+            'color' => 'required|string',
         ];
     }
 }

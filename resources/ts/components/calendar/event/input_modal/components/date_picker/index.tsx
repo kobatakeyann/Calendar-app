@@ -1,9 +1,6 @@
 import "@/ts/components/calendar/event/input_modal/components/date_picker/datepicker.css";
 import styles from "@/ts/components/calendar/event/input_modal/components/date_picker/datetime.module.css";
-import {
-  EditModalProps,
-  RegistrationModalProps,
-} from "@/ts/components/calendar/type";
+import { DatePickerProps } from "@/ts/components/calendar/type";
 import { ja } from "date-fns/locale";
 import React, { Fragment, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
@@ -11,9 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 registerLocale("ja", ja);
 
-export default function DatePickers(
-  props: RegistrationModalProps | EditModalProps
-) {
+export default function DatePickers(props: DatePickerProps) {
   const getStartDatetime = () => {
     if ("event" in props) {
       return props.event.start;
@@ -34,12 +29,27 @@ export default function DatePickers(
   const [isAllday, setIsAllday] = useState(false);
   const handleIsAllday = () => {
     setIsAllday(!isAllday);
+    props.setPutForm!({ ...props.putForm, ["isallday"]: !isAllday });
   };
   const getDayClassName = (date: Date) => {
     const day = date.getDay();
     if (day === 0) return "sunday";
     if (day === 6) return "saturday";
     return "weekday";
+  };
+  const handleStartChange = (date: Date) => {
+    setStartDate(date!);
+    props.setPutForm!({
+      ...props.putForm,
+      ["start"]: date.toLocaleString(),
+    });
+  };
+  const handleEndChange = (date: Date) => {
+    setEndDate(date!);
+    props.setPutForm!({
+      ...props.putForm,
+      ["end"]: date.toLocaleString(),
+    });
   };
   return (
     <Fragment>
@@ -48,20 +58,22 @@ export default function DatePickers(
           dateFormat={"MM/dd (eee)"}
           locale={"ja"}
           selected={startDate}
-          onChange={(date) => setStartDate(date!)}
+          onChange={handleStartChange}
           dayClassName={getDayClassName}
+          name="startDay"
         />
         {!isAllday && (
           <DatePicker
             dateFormat={"HH:mm"}
             locale={"ja"}
             selected={startDate}
-            onChange={(date) => setStartDate(date!)}
+            onChange={handleStartChange}
             showTimeSelect
             showTimeSelectOnly
             timeIntervals={10}
             timeFormat="HH:mm"
-            timeCaption="start"
+            timeCaption="startHour"
+            name="start"
           />
         )}
       </div>
@@ -71,20 +83,22 @@ export default function DatePickers(
           dateFormat={"MM/dd (eee)"}
           locale={"ja"}
           selected={endDate}
-          onChange={(date) => setEndDate(date!)}
+          onChange={handleEndChange}
           dayClassName={getDayClassName}
+          name="endDay"
         />
         {!isAllday && (
           <DatePicker
             dateFormat={"HH:mm"}
             locale={"ja"}
             selected={endDate}
-            onChange={(date) => setEndDate(date!)}
+            onChange={handleEndChange}
             showTimeSelect
             showTimeSelectOnly
             timeIntervals={10}
             timeFormat="HH:mm"
-            timeCaption="end"
+            timeCaption="endHour"
+            name="end"
           />
         )}
       </div>
@@ -94,6 +108,7 @@ export default function DatePickers(
           <input
             type="checkbox"
             onChange={handleIsAllday}
+            name="isAllday"
           />
           <span className={styles.slider}></span>
         </label>

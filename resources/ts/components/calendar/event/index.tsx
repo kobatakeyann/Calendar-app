@@ -49,7 +49,7 @@ export default function EventDisplay(props: DateInformation) {
             className={styles.eventItem}
           >
             <div className={styles.timeArea}>
-              {event.isallday ? (
+              {event.is_allday ? (
                 <p>終日</p>
               ) : (
                 <>

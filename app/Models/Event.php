@@ -10,6 +10,16 @@ class Event extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'start',
+        'end',
+        'is_allday',
+        'location',
+        'color',
+        'description',
+    ];
+
     protected $casts = [
         'is_allday' => 'boolean',
     ];

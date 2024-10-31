@@ -1,15 +1,15 @@
 import { Dispatch, SetStateAction } from "react";
 
 export interface Event {
-  id: string;
+  id?: string;
   title: string;
   start: string;
   end: string;
-  isallday: boolean;
+  is_allday?: boolean;
   color: string;
   location?: string;
   description?: string;
-  userId: string;
+  user_id?: string;
 }
 
 export interface EventProps {
@@ -32,6 +32,8 @@ export interface RegistrationModalProps {
   setIsOpened: Dispatch<SetStateAction<boolean>>;
   isNewEvent: boolean;
   date: string;
+  putForm: Event;
+  setPutForm?: Dispatch<SetStateAction<Event>>;
 }
 
 export interface EditModalProps {
@@ -39,7 +41,11 @@ export interface EditModalProps {
   isNewEvent: boolean;
   date: string;
   event: Event;
+  putForm: Event;
+  setPutForm?: Dispatch<SetStateAction<Event>>;
 }
+
+export type DatePickerProps = RegistrationModalProps | EditModalProps;
 
 export type FetchContextType = {
   shouldFetch: boolean;

@@ -8,7 +8,7 @@ export const getFormattedDate = (date: string) =>
     locale: "ja",
   });
 
-export const getFormattedtime = (datetime: string) =>
+export const getFormattedTime = (datetime: string) =>
   formatDate(datetime, {
     hour: "2-digit",
     minute: "2-digit",

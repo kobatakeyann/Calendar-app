@@ -1,6 +1,6 @@
 import {
   getFormattedDate,
-  getFormattedtime,
+  getFormattedTime,
 } from "@/ts/components/calendar/event/date";
 import styles from "@/ts/components/calendar/event/event.module.css";
 import EventInputModal from "@/ts/components/calendar/event/input_modal";
@@ -53,9 +53,9 @@ export default function EventDisplay(props: DateInformation) {
                 <p>終日</p>
               ) : (
                 <>
-                  <p className={styles.time}>{getFormattedtime(event.start)}</p>
+                  <p className={styles.time}>{getFormattedTime(event.start)}</p>
                   <p className={styles.time}>
-                    {event.end && getFormattedtime(event.end)}
+                    {event.end && getFormattedTime(event.end)}
                   </p>
                 </>
               )}

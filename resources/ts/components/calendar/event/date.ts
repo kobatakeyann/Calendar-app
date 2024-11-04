@@ -1,6 +1,6 @@
 import { formatDate } from "@fullcalendar/core";
 
-export const formattJaDate = (date: string) =>
+export const formatJaDate = (date: string) =>
   formatDate(date, {
     month: "long",
     day: "numeric",
@@ -8,7 +8,7 @@ export const formattJaDate = (date: string) =>
     locale: "ja",
   });
 
-export const formattJaTime = (datetime: string) =>
+export const formatJaTime = (datetime: string) =>
   formatDate(datetime, {
     hour: "2-digit",
     minute: "2-digit",

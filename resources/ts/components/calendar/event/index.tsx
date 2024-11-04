@@ -1,6 +1,6 @@
 import {
-  getFormattedDate,
-  getFormattedTime,
+  formatJaDate,
+  formatJaTime,
 } from "@/ts/components/calendar/event/date";
 import styles from "@/ts/components/calendar/event/event.module.css";
 import EventInputModal from "@/ts/components/calendar/event/input_modal";
@@ -23,7 +23,7 @@ export default function EventDisplay(props: DateInformation) {
   return (
     <div className={styles.eventArea}>
       <div className={styles.barArea}>
-        <p className={styles.date}>{getFormattedDate(props.date)}</p>
+        <p className={styles.date}>{formatJaDate(props.date)}</p>
         <button
           onClick={handleRegistrationModal}
           className={styles.addButton}
@@ -53,9 +53,9 @@ export default function EventDisplay(props: DateInformation) {
                 <p>終日</p>
               ) : (
                 <>
-                  <p className={styles.time}>{getFormattedTime(event.start)}</p>
+                  <p className={styles.time}>{formatJaTime(event.start)}</p>
                   <p className={styles.time}>
-                    {event.end && getFormattedTime(event.end)}
+                    {event.end && formatJaTime(event.end)}
                   </p>
                 </>
               )}

@@ -2,7 +2,7 @@ import AppIcon from "@/assets/images/app_icon.png";
 import styles from "@/ts/components/header/header.module.css";
 import React from "react";
 
-export default function Header() {
+function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.headerIconArea}>
@@ -62,3 +62,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header;

@@ -11,7 +11,7 @@ import DatePickers from "../date_picker";
 
 registerLocale("ja", ja);
 
-export default function EventRegistration(props: RegistrationModalProps) {
+function EventRegistration(props: RegistrationModalProps) {
   const context = useContext(FetchContext);
   if (!context) {
     throw new Error("FetchContext is not found");
@@ -101,3 +101,5 @@ export default function EventRegistration(props: RegistrationModalProps) {
     </Fragment>
   );
 }
+
+export default EventRegistration;

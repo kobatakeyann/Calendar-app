@@ -1,5 +1,5 @@
 import { Event } from "@/ts/services/api/type";
-import getXSRFToken from "@/ts/utils/token";
+import { getXSRFToken } from "@/ts/utils/token";
 import axios from "axios";
 
 export const fetchEvents = async (): Promise<Event[]> => {

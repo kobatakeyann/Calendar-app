@@ -17,7 +17,7 @@ export const FetchContext = createContext<FetchContextType | undefined>(
   undefined
 );
 
-export default function Calendar() {
+function Calendar() {
   const today = new Date().toISOString();
   const [selectedDateInfo, setSelectedDateInfo] = useState<DateInformation>({
     date: today,
@@ -71,3 +71,5 @@ export default function Calendar() {
     </div>
   );
 }
+
+export default Calendar;

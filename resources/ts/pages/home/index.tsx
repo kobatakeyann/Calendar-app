@@ -3,7 +3,7 @@ import Calendar from "@/ts/pages/home/components/calendar";
 import styles from "@/ts/pages/home/home.module.css";
 import React from "react";
 
-export default function Home() {
+function Home() {
   return (
     <div className={styles.mainContentsArea}>
       <Header />
@@ -13,3 +13,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;

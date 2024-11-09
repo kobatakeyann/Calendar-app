@@ -4,7 +4,7 @@ import React, { Fragment } from "react";
 import EventEdition from "./components/edition";
 import EventRegistration from "./components/registration";
 
-export default function EventInputModal(props: ModalProps) {
+function EventInputModal(props: ModalProps) {
   const closeRegistrationModal = () => {
     props.setIsOpened(false);
   };
@@ -35,3 +35,5 @@ export default function EventInputModal(props: ModalProps) {
     </Fragment>
   );
 }
+
+export default EventInputModal;

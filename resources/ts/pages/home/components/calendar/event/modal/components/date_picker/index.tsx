@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 registerLocale("ja", ja);
 
-export default function DatePickers(props: DatePickerProps) {
+function DatePickers(props: DatePickerProps) {
   const getStartDatetime = () => {
     if ("event" in props) {
       return props.event.start;
@@ -116,3 +116,5 @@ export default function DatePickers(props: DatePickerProps) {
     </Fragment>
   );
 }
+
+export default DatePickers;

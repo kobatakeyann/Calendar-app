@@ -7,7 +7,7 @@ import EventInputModal from "@/ts/pages/home/components/calendar/event/modal";
 import { DateInformation } from "@/ts/pages/home/components/calendar/type";
 import React, { useState } from "react";
 
-export default function EventDisplay(props: DateInformation) {
+function EventDisplay(props: DateInformation) {
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const [isNewEvent, setIsNewEvent] = useState<boolean>(true);
   const [targetEventId, setTargetEventId] = useState<string>("");
@@ -80,3 +80,5 @@ export default function EventDisplay(props: DateInformation) {
     </div>
   );
 }
+
+export default EventDisplay;

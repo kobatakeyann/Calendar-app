@@ -1,4 +1,4 @@
-export default function getXSRFToken(): string {
+export const getXSRFToken = (): string => {
   const name = "XSRF-TOKEN=";
   const decodedCookie = decodeURIComponent(document.cookie);
   const cookies = decodedCookie.split(";");
@@ -9,4 +9,4 @@ export default function getXSRFToken(): string {
     }
   }
   return "";
-}
+};

@@ -1,15 +1,11 @@
 import { FetchContext } from "@/ts/pages/home/components/calendar";
+import DatePickers from "@/ts/pages/home/components/calendar/event/modal/components/date_picker";
 import styles from "@/ts/pages/home/components/calendar/event/modal/components/registration/registration.module.css";
 import { RegistrationModalProps } from "@/ts/pages/home/components/calendar/type";
 import { addEvent } from "@/ts/services/api/api";
 import { Event } from "@/ts/services/api/type";
-import { ja } from "date-fns/locale";
 import React, { ChangeEvent, Fragment, useContext, useState } from "react";
-import { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import DatePickers from "../date_picker";
-
-registerLocale("ja", ja);
 
 function EventRegistration(props: RegistrationModalProps) {
   const context = useContext(FetchContext);
@@ -20,7 +16,7 @@ function EventRegistration(props: RegistrationModalProps) {
   const closeRegistrationModal = () => {
     props.setIsOpened(false);
   };
-  const [putForm, SetPutForm] = useState<Event>({
+  const [form, setForm] = useState<Event>({
     title: "",
     start: "",
     end: "",
@@ -30,17 +26,16 @@ function EventRegistration(props: RegistrationModalProps) {
     description: undefined,
   });
 
-  const handleChange = (
+  const handleChangeForm = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    SetPutForm({ ...putForm, [name]: value });
+    setForm({ ...form, [name]: value });
   };
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleAddEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("putForm", putForm);
     try {
-      await addEvent(putForm);
+      await addEvent(form);
       props.setIsOpened(false);
       setShouldFetch(true);
     } catch {
@@ -56,7 +51,7 @@ function EventRegistration(props: RegistrationModalProps) {
         <h2 className={styles.modalHeader}>予定を作成</h2>
         <form
           className={styles.form}
-          onSubmit={handleSubmit}
+          onSubmit={handleAddEvent}
         >
           <div className={styles.formElement}>
             <input
@@ -64,14 +59,14 @@ function EventRegistration(props: RegistrationModalProps) {
               placeholder="タイトルを入力"
               className={styles.eventInput}
               name="title"
-              onChange={handleChange}
+              onChange={handleChangeForm}
             ></input>
           </div>
           <div className={styles.dateInput}>
             <DatePickers
               {...props}
-              putForm={putForm}
-              setPutForm={SetPutForm}
+              putForm={form}
+              setPutForm={setForm}
             />
           </div>
           <div className={styles.formElement}>
@@ -80,7 +75,7 @@ function EventRegistration(props: RegistrationModalProps) {
               rows={3}
               maxLength={50}
               className={styles.descriptionInput}
-              onChange={handleChange}
+              onChange={handleChangeForm}
               name="description"
             ></textarea>
           </div>

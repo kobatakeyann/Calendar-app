@@ -1,8 +1,8 @@
+import styles from "@/ts/pages/home/components/calendar/event/event.module.css";
 import {
   formatJaDate,
   formatJaTime,
-} from "@/ts/pages/home/components/calendar/event/date";
-import styles from "@/ts/pages/home/components/calendar/event/event.module.css";
+} from "@/ts/pages/home/components/calendar/event/helper/date";
 import EventInputModal from "@/ts/pages/home/components/calendar/event/modal";
 import { DateInformation } from "@/ts/pages/home/components/calendar/type";
 import React, { useState } from "react";

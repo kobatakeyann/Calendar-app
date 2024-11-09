@@ -8,7 +8,6 @@ function EventInputModal(props: ModalProps) {
   const closeRegistrationModal = () => {
     props.setIsOpened(false);
   };
-  console.log(props);
   return (
     <Fragment>
       <div

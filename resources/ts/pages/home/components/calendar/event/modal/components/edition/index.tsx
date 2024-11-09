@@ -2,13 +2,9 @@ import { FetchContext } from "@/ts/pages/home/components/calendar";
 import styles from "@/ts/pages/home/components/calendar/event/modal/components/edition/edition.module.css";
 import { EditModalProps } from "@/ts/pages/home/components/calendar/type";
 import { deleteEvent, updateEvent } from "@/ts/services/api/api";
-import { ja } from "date-fns/locale";
 import React, { ChangeEvent, Fragment, useContext, useState } from "react";
-import { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePickers from "../date_picker";
-
-registerLocale("ja", ja);
 
 export default function EventEdition(props: EditModalProps) {
   const context = useContext(FetchContext);
@@ -19,7 +15,7 @@ export default function EventEdition(props: EditModalProps) {
   const closeRegistrationModal = () => {
     props.setIsOpened(false);
   };
-  const [putForm, SetPutForm] = useState({
+  const [putForm, setPutForm] = useState({
     title: props.event.title,
     start: props.event.start,
     end: props.event.end,
@@ -33,10 +29,10 @@ export default function EventEdition(props: EditModalProps) {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    SetPutForm({ ...putForm, [name]: value });
+    setPutForm({ ...putForm, [name]: value });
   };
 
-  const handleDelete = async (eventId: string) => {
+  const handleDeleteEvent = async (eventId: string) => {
     try {
       await deleteEvent(eventId);
       props.setIsOpened(false);
@@ -45,7 +41,7 @@ export default function EventEdition(props: EditModalProps) {
       console.error("API request error:", error);
     }
   };
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleUpdateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("putForm", putForm);
     try {
@@ -66,7 +62,7 @@ export default function EventEdition(props: EditModalProps) {
         <h2 className={styles.modalHeader}>予定を編集</h2>
         <form
           className={styles.form}
-          onSubmit={handleSubmit}
+          onSubmit={handleUpdateEvent}
         >
           <div className={styles.formElement}>
             <input
@@ -82,7 +78,7 @@ export default function EventEdition(props: EditModalProps) {
             <DatePickers
               {...props}
               putForm={putForm}
-              setPutForm={SetPutForm}
+              setPutForm={setPutForm}
             />
           </div>
           <div className={styles.formElement}>
@@ -106,7 +102,7 @@ export default function EventEdition(props: EditModalProps) {
         <button
           type="submit"
           className={styles.deleteButton}
-          onClick={() => handleDelete(props.event.id!)}
+          onClick={() => handleDeleteEvent(props.event.id!)}
         >
           削除
         </button>

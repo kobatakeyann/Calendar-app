@@ -6,7 +6,7 @@ import {
 } from "@/ts/pages/home/components/calendar/type";
 import { Event } from "@/ts/services/api/type";
 
-import { formatEvents } from "@/ts/pages/home/components/calendar/eventService";
+import { formatEvents } from "@/ts/pages/home/components/calendar/helper/eventService";
 import { fetchEvents, fetchOnDateEvents } from "@/ts/services/api/api";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";

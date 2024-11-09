@@ -1,6 +1,6 @@
-import "@/ts/components/calendar/event/input_modal/components/date_picker/datepicker.css";
-import styles from "@/ts/components/calendar/event/input_modal/components/date_picker/datetime.module.css";
-import { DatePickerProps } from "@/ts/components/calendar/type";
+import "@/ts/pages/home/components/calendar/event/input_modal/components/date_picker/datepicker.css";
+import styles from "@/ts/pages/home/components/calendar/event/input_modal/components/date_picker/datetime.module.css";
+import { DatePickerProps } from "@/ts/pages/home/components/calendar/type";
 import { ja } from "date-fns/locale";
 import React, { Fragment, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";

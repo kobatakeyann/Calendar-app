@@ -1,11 +1,11 @@
-import styles from "@/ts/components/calendar/calendar.module.css";
-import EventDisplay from "@/ts/components/calendar/event";
+import styles from "@/ts/pages/home/components/calendar/calendar.module.css";
+import EventDisplay from "@/ts/pages/home/components/calendar/event";
 import {
   DateInformation,
   Event,
   FetchContextType,
-} from "@/ts/components/calendar/type";
-import { fetchData } from "@/ts/services/api/apiRequest";
+} from "@/ts/pages/home/components/calendar/type";
+import { fetchEvents, fetchOnDateEvents } from "@/ts/services/api/api";
 import { formatEvents } from "@/ts/services/api/eventService";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
@@ -24,28 +24,21 @@ export default function Calendar() {
   });
   const [events, setEvents] = useState<Event[]>([]);
   const [shouldFetch, setShouldFetch] = useState<boolean>(true);
-  const fetchEvents = async () => {
-    try {
-      const response = await fetchData<Event[]>("/api/events");
-      setEvents(response);
-    } catch (error) {
-      console.log("API request error:", error);
-    } finally {
-      setShouldFetch(false);
-    }
+  const handleFetchEvents = async () => {
+    const e = await fetchEvents();
+    setEvents(e);
+    setShouldFetch(false);
   };
   useEffect(() => {
     if (shouldFetch) {
-      fetchEvents();
+      handleFetchEvents();
     }
   }, [shouldFetch]);
 
   const handleDateClick = async (arg: DateClickArg) => {
     try {
-      const response = await fetchData<Event[]>(
-        `/api/events/on-date?date=${arg.dateStr}`
-      );
-      setSelectedDateInfo({ date: arg.dateStr, events: response });
+      const onDateEvents = await fetchOnDateEvents(arg.dateStr);
+      setSelectedDateInfo({ date: arg.dateStr, events: onDateEvents });
     } catch (error) {
       console.log("API request error:", error);
     }

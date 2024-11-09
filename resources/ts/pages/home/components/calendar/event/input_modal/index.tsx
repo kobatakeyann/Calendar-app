@@ -1,5 +1,5 @@
-import styles from "@/ts/components/calendar/event/input_modal/input_modal.module.css";
-import { ModalProps } from "@/ts/components/calendar/type";
+import styles from "@/ts/pages/home/components/calendar/event/input_modal/input_modal.module.css";
+import { ModalProps } from "@/ts/pages/home/components/calendar/type";
 import React, { Fragment } from "react";
 import EventEdition from "./components/edition";
 import EventRegistration from "./components/registration";

@@ -1,10 +1,10 @@
 import {
   formatJaDate,
   formatJaTime,
-} from "@/ts/components/calendar/event/date";
-import styles from "@/ts/components/calendar/event/event.module.css";
-import EventInputModal from "@/ts/components/calendar/event/input_modal";
-import { DateInformation } from "@/ts/components/calendar/type";
+} from "@/ts/pages/home/components/calendar/event/date";
+import styles from "@/ts/pages/home/components/calendar/event/event.module.css";
+import EventInputModal from "@/ts/pages/home/components/calendar/event/input_modal";
+import { DateInformation } from "@/ts/pages/home/components/calendar/type";
 import React, { useState } from "react";
 
 export default function EventDisplay(props: DateInformation) {

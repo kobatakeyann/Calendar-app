@@ -1,4 +1,4 @@
-import Calendar from "@/ts/components/calendar";
+import Calendar from "@/ts/pages/home/components/calendar";
 import styles from "@/ts/pages/home/home.module.css";
 import React from "react";
 import Header from "../../components/header/Header";

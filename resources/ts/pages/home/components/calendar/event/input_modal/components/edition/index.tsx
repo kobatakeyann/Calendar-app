@@ -1,16 +1,9 @@
-import { FetchContext } from "@/ts/components/calendar";
-import styles from "@/ts/components/calendar/event/input_modal/components/edition/edition.module.css";
-import { EditModalProps } from "@/ts/components/calendar/type";
-import { deleteData, updateData } from "@/ts/services/api/apiRequest";
+import { FetchContext } from "@/ts/pages/home/components/calendar";
+import styles from "@/ts/pages/home/components/calendar/event/input_modal/components/edition/edition.module.css";
+import { EditModalProps } from "@/ts/pages/home/components/calendar/type";
+import { deleteEvent, updateEvent } from "@/ts/services/api/api";
 import { ja } from "date-fns/locale";
-import React, {
-  ChangeEvent,
-  Dispatch,
-  Fragment,
-  SetStateAction,
-  useContext,
-  useState,
-} from "react";
+import React, { ChangeEvent, Fragment, useContext, useState } from "react";
 import { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePickers from "../date_picker";
@@ -42,32 +35,23 @@ export default function EventEdition(props: EditModalProps) {
     const { name, value } = e.target;
     SetPutForm({ ...putForm, [name]: value });
   };
-  const deleteEvent = async (
-    id: string,
-    setShouldFetch: Dispatch<SetStateAction<boolean>>
-  ) => {
+
+  const handleDelete = async (eventId: string) => {
     try {
-      await deleteData(`/api/events/${id}`);
+      await deleteEvent(eventId);
       props.setIsOpened(false);
       setShouldFetch(true);
     } catch (error) {
       console.error("API request error:", error);
     }
   };
-  const handleDelete = (eventId: string) => {
-    deleteEvent(eventId, setShouldFetch);
-  };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("putForm", putForm);
     try {
-      const response = await updateData(
-        `/api/events/${props.event.id}`,
-        putForm
-      );
+      await updateEvent(props.event.id!, putForm);
       props.setIsOpened(false);
       setShouldFetch(true);
-      console.log("Update succeeded", response);
     } catch {
       console.error("Update failed", console.error());
     }

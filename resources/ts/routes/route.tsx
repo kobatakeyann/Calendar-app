@@ -1,4 +1,4 @@
-import Home from "@/ts/pages/home/Home";
+import Home from "@/ts/pages/home";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 

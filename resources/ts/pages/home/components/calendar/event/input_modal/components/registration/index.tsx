@@ -1,7 +1,10 @@
-import { FetchContext } from "@/ts/components/calendar";
-import styles from "@/ts/components/calendar/event/input_modal/components/registration/registration.module.css";
-import { Event, RegistrationModalProps } from "@/ts/components/calendar/type";
-import { createData } from "@/ts/services/api/apiRequest";
+import { FetchContext } from "@/ts/pages/home/components/calendar";
+import styles from "@/ts/pages/home/components/calendar/event/input_modal/components/registration/registration.module.css";
+import {
+  Event,
+  RegistrationModalProps,
+} from "@/ts/pages/home/components/calendar/type";
+import { addEvent } from "@/ts/services/api/api";
 import { ja } from "date-fns/locale";
 import React, { ChangeEvent, Fragment, useContext, useState } from "react";
 import { registerLocale } from "react-datepicker";
@@ -39,12 +42,11 @@ export default function EventRegistration(props: RegistrationModalProps) {
     e.preventDefault();
     console.log("putForm", putForm);
     try {
-      const response = await createData("/api/events", putForm);
+      await addEvent(putForm);
       props.setIsOpened(false);
       setShouldFetch(true);
-      console.log("successfully created", response);
     } catch {
-      console.error("Update failed", console.error());
+      console.error("Registration failed", console.error());
     }
   };
   return (

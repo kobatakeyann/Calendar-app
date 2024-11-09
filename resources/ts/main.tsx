@@ -2,7 +2,7 @@ import Home from "@/ts/pages/home";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
+function Main() {
   return (
     <BrowserRouter>
       <Routes>
@@ -15,4 +15,4 @@ function App() {
   );
 }
 
-export default App;
+export default Main;

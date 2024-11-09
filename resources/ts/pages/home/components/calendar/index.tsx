@@ -2,11 +2,12 @@ import styles from "@/ts/pages/home/components/calendar/calendar.module.css";
 import EventDisplay from "@/ts/pages/home/components/calendar/event";
 import {
   DateInformation,
-  Event,
   FetchContextType,
 } from "@/ts/pages/home/components/calendar/type";
+import { Event } from "@/ts/services/api/type";
+
+import { formatEvents } from "@/ts/pages/home/components/calendar/eventService";
 import { fetchEvents, fetchOnDateEvents } from "@/ts/services/api/api";
-import { formatEvents } from "@/ts/services/api/eventService";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import FullCalendar from "@fullcalendar/react";

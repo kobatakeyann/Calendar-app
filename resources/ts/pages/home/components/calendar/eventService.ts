@@ -1,4 +1,4 @@
-import { Event } from "@/ts/pages/home/components/calendar/type";
+import { Event } from "@/ts/services/api/type";
 
 export const formatEvents = (apiResponse: any[]): Event[] => {
   return apiResponse.map((event) => ({

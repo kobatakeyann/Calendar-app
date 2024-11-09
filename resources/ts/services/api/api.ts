@@ -1,4 +1,4 @@
-import { Event } from "@/ts/pages/home/components/calendar/type";
+import { Event } from "@/ts/services/api/type";
 import getXSRFToken from "@/ts/utils/token";
 import axios from "axios";
 

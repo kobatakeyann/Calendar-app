@@ -3,7 +3,7 @@ import {
   formatJaTime,
 } from "@/ts/pages/home/components/calendar/event/date";
 import styles from "@/ts/pages/home/components/calendar/event/event.module.css";
-import EventInputModal from "@/ts/pages/home/components/calendar/event/input_modal";
+import EventInputModal from "@/ts/pages/home/components/calendar/event/modal";
 import { DateInformation } from "@/ts/pages/home/components/calendar/type";
 import React, { useState } from "react";
 

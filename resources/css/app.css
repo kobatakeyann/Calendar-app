@@ -71,3 +71,7 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.fc .fc-button:disabled {
+  opacity: 1;
+}

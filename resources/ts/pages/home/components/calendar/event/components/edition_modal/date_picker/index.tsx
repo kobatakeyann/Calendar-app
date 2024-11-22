@@ -1,28 +1,22 @@
 import "@/ts/pages/home/components/calendar/event/components/edition_modal/date_picker/datepicker.css";
 import styles from "@/ts/pages/home/components/calendar/event/components/edition_modal/date_picker/datetime.module.css";
 import { stringToDate } from "@/ts/pages/home/components/calendar/event/components/edition_modal/date_picker/helper/cast";
+import { getDayClassName } from "@/ts/pages/home/components/calendar/event/components/edition_modal/date_picker/helper/date_handler";
 import { DatePickerProps } from "@/ts/pages/home/components/calendar/type";
 import { ja } from "date-fns/locale";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 function DatePickers(props: DatePickerProps) {
   registerLocale("ja", ja);
-  const startDatetime = "event" in props ? props.event.start : props.date;
-  const endDatetime = "event" in props ? props.event.end : props.date;
+  const startDatetime = props.targetEvent!.start;
+  const endDatetime = props.targetEvent!.end;
   const [startDate, setStartDate] = useState(stringToDate(startDatetime));
   const [endDate, setEndDate] = useState(stringToDate(endDatetime));
-  const [isAllday, setIsAllday] = useState(false);
+  const [isAllday, setIsAllday] = useState(props.targetEvent!.is_allday);
   const handleIsAllday = () => {
     setIsAllday(!isAllday);
-    props.setPutForm!({ ...props.putForm, ["isallday"]: !isAllday });
-  };
-  const getDayClassName = (date: Date) => {
-    const day = date.getDay();
-    if (day === 0) return "sunday";
-    if (day === 6) return "saturday";
-    return "weekday";
   };
   const handleStartChange = (date: Date) => {
     setStartDate(date!);
@@ -38,6 +32,12 @@ function DatePickers(props: DatePickerProps) {
       ["end"]: date.toLocaleString(),
     });
   };
+  useEffect(() => {
+    props.setPutForm!({
+      ...props.putForm,
+      ["is_allday"]: isAllday,
+    });
+  }, [isAllday]);
   return (
     <Fragment>
       <div className={styles.datetimePickers}>
@@ -94,8 +94,9 @@ function DatePickers(props: DatePickerProps) {
         <label className={styles.switch}>
           <input
             type="checkbox"
+            checked={isAllday}
             onChange={handleIsAllday}
-            name="isAllday"
+            name="is_allday"
           />
           <span className={styles.slider}></span>
         </label>

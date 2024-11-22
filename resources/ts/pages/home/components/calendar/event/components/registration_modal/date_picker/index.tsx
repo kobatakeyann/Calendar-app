@@ -2,23 +2,19 @@ import "@/ts/pages/home/components/calendar/event/components/registration_modal/
 import styles from "@/ts/pages/home/components/calendar/event/components/registration_modal/date_picker/datetime.module.css";
 import { stringToDate } from "@/ts/pages/home/components/calendar/event/components/registration_modal/date_picker/helper/cast";
 import { getDayClassName } from "@/ts/pages/home/components/calendar/event/components/registration_modal/date_picker/helper/date_handler";
-import { RegistrationDatepickerProps } from "@/ts/pages/home/components/calendar/type";
+import { DatePickerProps } from "@/ts/pages/home/components/calendar/type";
 import { ja } from "date-fns/locale";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function DatePickers(props: RegistrationDatepickerProps) {
+function DatePickers(props: DatePickerProps) {
   registerLocale("ja", ja);
   const targetDate = props.dateInfo.date;
   const [startDate, setStartDate] = useState(stringToDate(targetDate));
   const [endDate, setEndDate] = useState(stringToDate(targetDate));
   const [isAllday, setIsAllday] = useState(false);
   const handleIsAllday = () => {
-    props.setPutForm!({
-      ...props.putForm,
-      ["is_allday"]: !isAllday,
-    });
     setIsAllday(!isAllday);
   };
   const handleStartChange = (date: Date) => {
@@ -35,6 +31,12 @@ function DatePickers(props: RegistrationDatepickerProps) {
       ["end"]: date.toLocaleString(),
     });
   };
+  useEffect(() => {
+    props.setPutForm!({
+      ...props.putForm,
+      ["is_allday"]: isAllday,
+    });
+  }, [isAllday]);
   return (
     <Fragment>
       <div className={styles.datetimePickers}>
@@ -92,7 +94,7 @@ function DatePickers(props: RegistrationDatepickerProps) {
           <input
             type="checkbox"
             onChange={handleIsAllday}
-            name="isAllday"
+            name="is_allday"
           />
           <span className={styles.slider}></span>
         </label>

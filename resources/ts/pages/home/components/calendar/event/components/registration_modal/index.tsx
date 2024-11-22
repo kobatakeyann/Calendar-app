@@ -6,6 +6,7 @@ import { addEvent } from "@/ts/services/api/api";
 import { Event } from "@/ts/services/api/type";
 import React, { ChangeEvent, Fragment, useContext, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
+import { stringToDate } from "./date_picker/helper/cast";
 
 function EventRegistrationModal(props: RegistrationModalProps) {
   const context = useContext(FetchContext);
@@ -16,10 +17,11 @@ function EventRegistrationModal(props: RegistrationModalProps) {
   const closeRegistrationModal = () => {
     props.setIsOpened(false);
   };
-  const [form, setForm] = useState<Event>({
+  const initialDatetime = stringToDate(props.dateInfo.date).toLocaleString();
+  const [putform, setPutForm] = useState<Event>({
     title: "",
-    start: props.dateInfo.date.toLocaleString(),
-    end: props.dateInfo.date.toLocaleString(),
+    start: initialDatetime,
+    end: initialDatetime,
     is_allday: false,
     color: "orange",
     location: undefined,
@@ -30,12 +32,12 @@ function EventRegistrationModal(props: RegistrationModalProps) {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setPutForm({ ...putform, [name]: value });
   };
   const handleAddEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await addEvent(form);
+      await addEvent(putform);
       props.setIsOpened(false);
       setShouldFetch(true);
     } catch {
@@ -65,8 +67,8 @@ function EventRegistrationModal(props: RegistrationModalProps) {
           <div className={styles.dateInput}>
             <DatePickers
               {...props}
-              putForm={form}
-              setPutForm={setForm}
+              putForm={putform}
+              setPutForm={setPutForm}
             />
           </div>
           <div className={styles.formElement}>

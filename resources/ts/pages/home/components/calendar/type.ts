@@ -9,27 +9,20 @@ export interface DateInformation {
 export interface RegistrationModalProps {
   setIsOpened: Dispatch<SetStateAction<boolean>>;
   dateInfo: DateInformation;
-  // putForm: Event;
-  // setPutForm?: Dispatch<SetStateAction<Event>>;
 }
 
-export interface RegistrationDatepickerProps {
+export interface EditionModalProps {
+  setIsOpened: Dispatch<SetStateAction<boolean>>;
+  dateInfo: DateInformation;
+  eventId: string;
+}
+
+export interface DatePickerProps {
   dateInfo: DateInformation;
   putForm: Event;
-  setPutForm?: Dispatch<SetStateAction<Event>>;
+  setPutForm: Dispatch<SetStateAction<Event>>;
+  targetEvent?: Event;
 }
-
-export interface EditModalProps {
-  setIsOpened: Dispatch<SetStateAction<boolean>>;
-  isNewEvent: boolean;
-  date: string;
-  eventId?: string;
-  event: Event;
-  putForm: Event;
-  setPutForm?: Dispatch<SetStateAction<Event>>;
-}
-
-export type DatePickerProps = RegistrationModalProps | EditModalProps;
 
 export type FetchContextType = {
   shouldFetch: boolean;

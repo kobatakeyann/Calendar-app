@@ -1,12 +1,13 @@
 import { FetchContext } from "@/ts/pages/home/components/calendar";
 import DatePickers from "@/ts/pages/home/components/calendar/event/components/edition_modal/date_picker";
 import styles from "@/ts/pages/home/components/calendar/event/components/edition_modal/edition.module.css";
-import { EditModalProps } from "@/ts/pages/home/components/calendar/type";
+import { EditionModalProps } from "@/ts/pages/home/components/calendar/type";
 import { deleteEvent, updateEvent } from "@/ts/services/api/api";
+import { Event } from "@/ts/services/api/type";
 import React, { ChangeEvent, Fragment, useContext, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function EventEditionModal(props: EditModalProps) {
+export default function EventEditionModal(props: EditionModalProps) {
   const context = useContext(FetchContext);
   if (!context) {
     throw new Error("FetchContext is not found");
@@ -15,15 +16,18 @@ export default function EventEditionModal(props: EditModalProps) {
   const closeRegistrationModal = () => {
     props.setIsOpened(false);
   };
-  const [putForm, setPutForm] = useState({
-    title: props.event.title,
-    start: props.event.start,
-    end: props.event.end,
-    isallday: props.event.is_allday,
-    color: props.event.color,
-    location: props.event.location,
-    description: props.event.description,
-    userId: props.event.user_id,
+  const targetEvent = props.dateInfo.events.find(
+    (event) => event.id === props.eventId
+  );
+  const [putForm, setPutForm] = useState<Event>({
+    title: targetEvent!.title,
+    start: targetEvent!.start,
+    end: targetEvent!.end,
+    is_allday: targetEvent!.is_allday,
+    color: targetEvent!.color,
+    location: targetEvent!.location,
+    description: targetEvent!.description,
+    user_id: targetEvent!.user_id,
   });
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -43,9 +47,8 @@ export default function EventEditionModal(props: EditModalProps) {
   };
   const handleUpdateEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("putForm", putForm);
     try {
-      await updateEvent(props.event.id!, putForm);
+      await updateEvent(props.eventId, putForm);
       props.setIsOpened(false);
       setShouldFetch(true);
     } catch {
@@ -68,7 +71,7 @@ export default function EventEditionModal(props: EditModalProps) {
             <input
               type="text"
               name="title"
-              defaultValue={props.event.title}
+              defaultValue={targetEvent!.title}
               placeholder="タイトルを入力"
               className={styles.eventInput}
               onChange={handleChange}
@@ -79,13 +82,14 @@ export default function EventEditionModal(props: EditModalProps) {
               {...props}
               putForm={putForm}
               setPutForm={setPutForm}
+              targetEvent={targetEvent}
             />
           </div>
           <div className={styles.formElement}>
             <textarea
               placeholder="メモ"
               name="description"
-              defaultValue={props.event.description}
+              defaultValue={targetEvent!.description}
               rows={3}
               maxLength={50}
               className={styles.descriptionInput}
@@ -102,7 +106,7 @@ export default function EventEditionModal(props: EditModalProps) {
         <button
           type="submit"
           className={styles.deleteButton}
-          onClick={() => handleDeleteEvent(props.event.id!)}
+          onClick={() => handleDeleteEvent(props.eventId)}
         >
           削除
         </button>

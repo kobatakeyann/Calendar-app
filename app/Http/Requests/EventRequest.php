@@ -25,7 +25,7 @@ class EventRequest extends FormRequest
             'title' => 'required|string|max:255',
             'start' => 'required|date',
             'end' => 'required|date|after_or_equal:start',
-            'is_all_day' => 'boolean',
+            'is_allday' => 'boolean',
             'description' => 'nullable|string',
             'location' => 'nullable|string|max:255',
             'color' => 'required|string',

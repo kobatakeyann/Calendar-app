@@ -63,6 +63,11 @@ body {
 }
 
 .fc-toolbar-chunk {
-  color: #428ec4;
+  color: #e1e3e4;
   font-weight: bold;
+}
+
+.fc .fc-daygrid-day-top {
+  display: flex;
+  flex-direction: row;
 }

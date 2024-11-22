@@ -31,7 +31,18 @@ function Calendar() {
     setShouldFetch(false);
   };
   useEffect(() => {
+    fetchOnDateEvents(today).then((todayEvents) => {
+      setSelectedDateInfo({ date: today, events: todayEvents });
+    });
+  }, []);
+  useEffect(() => {
     if (shouldFetch) {
+      fetchOnDateEvents(selectedDateInfo.date).then((targetEvents) => {
+        setSelectedDateInfo({
+          date: selectedDateInfo.date,
+          events: targetEvents,
+        });
+      });
       handleFetchEvents();
     }
   }, [shouldFetch]);

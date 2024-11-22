@@ -43,6 +43,8 @@ body {
 .fc {
   width: 100%;
   min-height: 95%;
+  border: 2px solid #000;
+  overflow: hidden;
 }
 
 .fc-day-sat {
@@ -58,4 +60,9 @@ body {
 .fc-daygrid-day-number,
 .fc-daygrid-day-top {
   color: #333;
+}
+
+.fc-toolbar-chunk {
+  color: #428ec4;
+  font-weight: bold;
 }

@@ -1,3 +1,4 @@
+import { fetchOnDateEvents } from "@/ts/services/api/api";
 import { Event } from "@/ts/services/api/type";
 
 export const formatEvents = (apiResponse: any[]): Event[] => {
@@ -14,4 +15,13 @@ export const formatEvents = (apiResponse: any[]): Event[] => {
       userId: event.user_id,
     },
   }));
+};
+
+export const fetchTodayEvents = async (todayDate: string) => {
+  try {
+    const todayEvents = await fetchOnDateEvents(todayDate);
+    return todayEvents;
+  } catch (error) {
+    console.log("API request error:", error);
+  }
 };

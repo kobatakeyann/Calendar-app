@@ -18,7 +18,7 @@ export const FetchContext = createContext<FetchContextType | undefined>(
 );
 
 function Calendar() {
-  const today = new Date().toISOString();
+  const today = new Date().toISOString().split("T")[0];
   const [selectedDateInfo, setSelectedDateInfo] = useState<DateInformation>({
     date: today,
     events: [],

@@ -1,12 +1,12 @@
 import { FetchContext } from "@/ts/pages/home/components/calendar";
-import styles from "@/ts/pages/home/components/calendar/event/modal/components/edition/edition.module.css";
+import DatePickers from "@/ts/pages/home/components/calendar/event/components/edition_modal/date_picker";
+import styles from "@/ts/pages/home/components/calendar/event/components/edition_modal/edition.module.css";
 import { EditModalProps } from "@/ts/pages/home/components/calendar/type";
 import { deleteEvent, updateEvent } from "@/ts/services/api/api";
 import React, { ChangeEvent, Fragment, useContext, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import DatePickers from "../date_picker";
 
-export default function EventEdition(props: EditModalProps) {
+export default function EventEditionModal(props: EditModalProps) {
   const context = useContext(FetchContext);
   if (!context) {
     throw new Error("FetchContext is not found");

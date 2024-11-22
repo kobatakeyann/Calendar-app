@@ -6,17 +6,15 @@ export interface DateInformation {
   events: Event[];
 }
 
-export interface ModalProps {
-  setIsOpened: Dispatch<SetStateAction<boolean>>;
-  isNewEvent: boolean;
-  dateInfo: DateInformation;
-  eventId?: string;
-}
-
 export interface RegistrationModalProps {
   setIsOpened: Dispatch<SetStateAction<boolean>>;
-  isNewEvent: boolean;
-  date: string;
+  dateInfo: DateInformation;
+  // putForm: Event;
+  // setPutForm?: Dispatch<SetStateAction<Event>>;
+}
+
+export interface RegistrationDatepickerProps {
+  dateInfo: DateInformation;
   putForm: Event;
   setPutForm?: Dispatch<SetStateAction<Event>>;
 }
@@ -25,6 +23,7 @@ export interface EditModalProps {
   setIsOpened: Dispatch<SetStateAction<boolean>>;
   isNewEvent: boolean;
   date: string;
+  eventId?: string;
   event: Event;
   putForm: Event;
   setPutForm?: Dispatch<SetStateAction<Event>>;

@@ -1,23 +1,22 @@
+import EventEditionModal from "@/ts/pages/home/components/calendar/event/components/edition_modal";
+import EventRegistrationModal from "@/ts/pages/home/components/calendar/event/components/registration_modal";
 import styles from "@/ts/pages/home/components/calendar/event/event.module.css";
 import {
   formatJaDate,
   formatJaTime,
 } from "@/ts/pages/home/components/calendar/event/helper/date";
-import EventInputModal from "@/ts/pages/home/components/calendar/event/modal";
 import { DateInformation } from "@/ts/pages/home/components/calendar/type";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 
 function EventDisplay(props: DateInformation) {
-  const [isOpened, setIsOpened] = useState<boolean>(false);
-  const [isNewEvent, setIsNewEvent] = useState<boolean>(true);
+  const [isRegistering, setIsRegistering] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [targetEventId, setTargetEventId] = useState<string>("");
   const handleRegistrationModal = () => {
-    setIsOpened(!isOpened);
-    setIsNewEvent(true);
+    setIsRegistering(!isRegistering);
   };
-  const handleEditModal = (id: string) => {
-    setIsOpened(!isOpened);
-    setIsNewEvent(false);
+  const handleEditionModal = (id: string) => {
+    setIsEditing(!isEditing);
     setTargetEventId(id);
   };
   return (
@@ -44,7 +43,7 @@ function EventDisplay(props: DateInformation) {
           <li
             key={event.id}
             onClick={() => {
-              handleEditModal(event.id);
+              handleEditionModal(event.id!);
             }}
             className={styles.eventItem}
           >
@@ -69,13 +68,34 @@ function EventDisplay(props: DateInformation) {
           </li>
         ))}
       </ul>
-      {isOpened && (
-        <EventInputModal
-          setIsOpened={setIsOpened}
-          dateInfo={props}
-          isNewEvent={isNewEvent}
-          eventId={targetEventId}
-        />
+      {isRegistering && (
+        <Fragment>
+          <div
+            id={styles.overlayer}
+            onClick={() => {
+              setIsRegistering(false);
+            }}
+          ></div>
+          <EventRegistrationModal
+            setIsOpened={setIsRegistering}
+            dateInfo={props}
+          />
+        </Fragment>
+      )}
+      {isEditing && (
+        <Fragment>
+          <div
+            id={styles.overlayer}
+            onClick={() => {
+              setIsEditing(false);
+            }}
+          ></div>
+          <EventEditionModal
+            setIsOpened={setIsEditing}
+            dateInfo={props}
+            eventId={targetEventId}
+          />
+        </Fragment>
       )}
     </div>
   );

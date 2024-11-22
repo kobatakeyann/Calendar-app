@@ -1,13 +1,13 @@
 import { FetchContext } from "@/ts/pages/home/components/calendar";
-import DatePickers from "@/ts/pages/home/components/calendar/event/modal/components/date_picker";
-import styles from "@/ts/pages/home/components/calendar/event/modal/components/registration/registration.module.css";
+import DatePickers from "@/ts/pages/home/components/calendar/event/components/registration_modal/date_picker";
+import styles from "@/ts/pages/home/components/calendar/event/components/registration_modal/registration.module.css";
 import { RegistrationModalProps } from "@/ts/pages/home/components/calendar/type";
 import { addEvent } from "@/ts/services/api/api";
 import { Event } from "@/ts/services/api/type";
 import React, { ChangeEvent, Fragment, useContext, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 
-function EventRegistration(props: RegistrationModalProps) {
+function EventRegistrationModal(props: RegistrationModalProps) {
   const context = useContext(FetchContext);
   if (!context) {
     throw new Error("FetchContext is not found");
@@ -18,8 +18,8 @@ function EventRegistration(props: RegistrationModalProps) {
   };
   const [form, setForm] = useState<Event>({
     title: "",
-    start: "",
-    end: "",
+    start: props.dateInfo.date.toLocaleString(),
+    end: props.dateInfo.date.toLocaleString(),
     is_allday: false,
     color: "orange",
     location: undefined,
@@ -97,4 +97,4 @@ function EventRegistration(props: RegistrationModalProps) {
   );
 }
 
-export default EventRegistration;
+export default EventRegistrationModal;

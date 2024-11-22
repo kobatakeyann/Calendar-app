@@ -1,6 +1,6 @@
-import "@/ts/pages/home/components/calendar/event/modal/components/date_picker/datepicker.css";
-import styles from "@/ts/pages/home/components/calendar/event/modal/components/date_picker/datetime.module.css";
-import { stringToDate } from "@/ts/pages/home/components/calendar/event/modal/components/date_picker/helper/cast";
+import "@/ts/pages/home/components/calendar/event/components/edition_modal/date_picker/datepicker.css";
+import styles from "@/ts/pages/home/components/calendar/event/components/edition_modal/date_picker/datetime.module.css";
+import { stringToDate } from "@/ts/pages/home/components/calendar/event/components/edition_modal/date_picker/helper/cast";
 import { DatePickerProps } from "@/ts/pages/home/components/calendar/type";
 import { ja } from "date-fns/locale";
 import React, { Fragment, useState } from "react";

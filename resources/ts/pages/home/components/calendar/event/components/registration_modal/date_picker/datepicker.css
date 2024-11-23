@@ -1,0 +1,32 @@
+/* react-datepicker */
+
+/* calendar */
+.react-datepicker__header {
+  background-color: #fff;
+}
+
+.saturday {
+  color: #4f9bd9;
+}
+
+.sunday {
+  color: #d9534f;
+}
+
+/* datetime displaying */
+.react-datepicker__input-container > input[type="text"] {
+  border: none;
+  text-align: center;
+  color: rgb(92, 92, 232);
+  cursor: none;
+  caret-color: transparent;
+}
+
+.react-datepicker__input-container > input[type="text"]:hover {
+  cursor: pointer;
+}
+
+.react-datepicker-wrapper {
+  display: flex;
+  justify-content: center;
+}

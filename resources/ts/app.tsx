@@ -1,12 +1,12 @@
+import Main from "@/ts/main";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./routes/route";
 
 const rootElement = document.getElementById("app");
 const root = ReactDOM.createRoot(rootElement!);
 
 root.render(
   <React.StrictMode>
-    <App />
+    <Main />
   </React.StrictMode>
 );

@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build": "vite build",
     "lint": "eslint -c .eslintrc.cjs .",
     "heroku-postbuild": "npm run build"
   },

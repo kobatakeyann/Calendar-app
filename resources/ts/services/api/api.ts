@@ -70,3 +70,30 @@ export const deleteEvent = async (eventId: string) => {
     throw error;
   }
 };
+
+export const fetchUserName = async (): Promise<string> => {
+  try {
+    const response = await axios.get("/api/username", {
+      headers: {
+        "X-XSRF-TOKEN": getXSRFToken(),
+      },
+    });
+    return response.data.username;
+  } catch (error) {
+    console.error("API request error:", error);
+    throw error;
+  }
+};
+
+export const logout = async () => {
+  try {
+    await axios.post("/logout", {
+      headers: {
+        "X-XSRF-TOKEN": getXSRFToken(),
+      },
+    });
+  } catch (error) {
+    console.error("API request error:", error);
+    throw error;
+  }
+};

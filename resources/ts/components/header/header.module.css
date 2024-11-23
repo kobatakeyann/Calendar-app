@@ -6,10 +6,17 @@
   height: 80px;
   align-items: center;
   background: linear-gradient(to right, #f08e8e, #f08e80);
-  gap: 24px;
   padding-left: 12px;
   position: fixed;
   z-index: 1000;
+}
+
+.headerElementArea {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 80px;
+  flex: 7;
 }
 
 .headerIconArea {
@@ -67,4 +74,33 @@
 
 .headerAppTitle:hover {
   cursor: pointer;
+}
+
+.headerUserArea {
+  display: flex;
+  justify-content: right;
+  flex: 3;
+  gap: 24px;
+  padding-right: 32px;
+}
+
+.userName {
+  color: rgb(24, 11, 83);
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.logoutButton {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: rgb(237, 228, 228);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  transition: 0.2s;
+  color: #444654;
 }

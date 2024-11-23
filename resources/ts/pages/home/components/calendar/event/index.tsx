@@ -47,7 +47,10 @@ function EventDisplay(props: DateInformation) {
             }}
             className={styles.eventItem}
           >
-            <div className={styles.timeArea}>
+            <div
+              className={styles.timeArea}
+              style={{ borderRight: `${event.color} 1.2px solid` }}
+            >
               {event.is_allday ? (
                 <p>終日</p>
               ) : (

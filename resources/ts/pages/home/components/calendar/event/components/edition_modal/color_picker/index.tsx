@@ -21,30 +21,34 @@ export default function ColorPicker(props: colorPickerProps) {
       <label className={styles.colorPickerLabel}>テーマ🎨</label>
       <div className={styles.colorCircleArea}>
         <div className={styles.flex}>
-          {colorCodes.slice(0, 5).map((color) => (
-            <div
-              key={color}
-              onClick={() => handleColorClick(color)}
-              className={`${styles.colorCircle} ${styles[color]} `}
-            >
-              {selectedColor === color && (
-                <span className={styles.selected}>✔️</span>
-              )}
-            </div>
-          ))}
+          {Object.entries(colorCodes)
+            .slice(0, 5)
+            .map(([colorName, colorCode]) => (
+              <div
+                key={colorName}
+                onClick={() => handleColorClick(colorCode)}
+                className={`${styles.colorCircle} ${styles[colorName]} `}
+              >
+                {selectedColor === colorCode && (
+                  <span className={styles.selected}>✔️</span>
+                )}
+              </div>
+            ))}
         </div>
         <div className={styles.flex}>
-          {colorCodes.slice(5).map((color) => (
-            <div
-              key={color}
-              onClick={() => handleColorClick(color)}
-              className={`${styles.colorCircle} ${styles[color]} `}
-            >
-              {selectedColor === color && (
-                <span className={styles.selected}>✔️</span>
-              )}
-            </div>
-          ))}
+          {Object.entries(colorCodes)
+            .slice(5)
+            .map(([colorName, colorCode]) => (
+              <div
+                key={colorName}
+                onClick={() => handleColorClick(colorCode)}
+                className={`${styles.colorCircle} ${styles[colorName]} `}
+              >
+                {selectedColor === colorCode && (
+                  <span className={styles.selected}>✔️</span>
+                )}
+              </div>
+            ))}
         </div>
       </div>
     </div>

@@ -55,9 +55,9 @@
 }
 
 .timeArea {
-  width: 14%;
+  width: 18%;
   margin: 4px 0;
-  border-right: #cfbf78 1px solid;
+  border-right: #cfbf78 1.5px solid;
   display: flex;
   flex-direction: column;
   justify-content: center;

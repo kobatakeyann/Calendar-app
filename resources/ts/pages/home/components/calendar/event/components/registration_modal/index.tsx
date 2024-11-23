@@ -1,4 +1,5 @@
 import { FetchContext } from "@/ts/pages/home/components/calendar";
+import ColorPicker from "@/ts/pages/home/components/calendar/event/components/registration_modal/color_picker";
 import DatePickers from "@/ts/pages/home/components/calendar/event/components/registration_modal/date_picker";
 import styles from "@/ts/pages/home/components/calendar/event/components/registration_modal/registration.module.css";
 import { RegistrationModalProps } from "@/ts/pages/home/components/calendar/type";
@@ -18,7 +19,7 @@ function EventRegistrationModal(props: RegistrationModalProps) {
     props.setIsOpened(false);
   };
   const initialDatetime = stringToDate(props.dateInfo.date).toLocaleString();
-  const [putform, setPutForm] = useState<Event>({
+  const [putForm, setPutForm] = useState<Event>({
     title: "",
     start: initialDatetime,
     end: initialDatetime,
@@ -32,12 +33,12 @@ function EventRegistrationModal(props: RegistrationModalProps) {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setPutForm({ ...putform, [name]: value });
+    setPutForm({ ...putForm, [name]: value });
   };
   const handleAddEvent = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await addEvent(putform);
+      await addEvent(putForm);
       props.setIsOpened(false);
       setShouldFetch(true);
     } catch {
@@ -67,7 +68,13 @@ function EventRegistrationModal(props: RegistrationModalProps) {
           <div className={styles.dateInput}>
             <DatePickers
               {...props}
-              putForm={putform}
+              putForm={putForm}
+              setPutForm={setPutForm}
+            />
+          </div>
+          <div className={styles.colorPalette}>
+            <ColorPicker
+              putForm={putForm}
               setPutForm={setPutForm}
             />
           </div>

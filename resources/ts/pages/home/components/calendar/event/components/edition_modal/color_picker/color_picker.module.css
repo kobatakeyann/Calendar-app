@@ -1,0 +1,78 @@
+.colorPickerArea {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.colorPickerLabel {
+  color: rgb(54, 53, 51);
+  font-size: 1.1em;
+}
+
+.colorCircleArea {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.colorCircle {
+  position: relative;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.red {
+  background-color: red;
+}
+
+.magenta {
+  background-color: magenta;
+}
+
+.blue {
+  background-color: rgb(102, 102, 233);
+}
+
+.orange {
+  background-color: orange;
+}
+
+.green {
+  background-color: rgb(111, 236, 109);
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.black {
+  background-color: black;
+}
+
+.purple {
+  background-color: rgb(190, 10, 190);
+}
+
+.lightblue {
+  background-color: rgb(137, 245, 242);
+}
+
+.selected {
+  position: absolute;
+  height: 50%;
+  width: 50%;
+  bottom: 0;
+  right: -10%;
+  border-radius: 50%;
+  font-size: 50%;
+  background: rgba(235, 229, 229, 0.9);
+}

@@ -2,10 +2,10 @@
 #content {
   position: fixed;
   box-sizing: border-box;
-  top: 15%;
+  top: 10%;
   left: 30%;
   width: 40%;
-  height: 75%;
+  height: 85%;
   padding: 1em;
   background: #fff;
   border-radius: 12px;
@@ -22,8 +22,9 @@
   flex-direction: column;
   justify-content: space-between;
   height: 70%;
-  padding: 5%;
+  padding: 0 5%;
   box-sizing: border-box;
+  gap: 8%;
 }
 
 /* event title input */
@@ -52,6 +53,14 @@ input[type="text"]:focus {
 .dateInput {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+/* color palette */
+.colorPalette {
+  display: flex;
+  justify-content: center;
   align-items: center;
   height: 100%;
 }

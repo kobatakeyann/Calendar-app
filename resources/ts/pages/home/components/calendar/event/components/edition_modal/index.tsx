@@ -1,4 +1,5 @@
 import { FetchContext } from "@/ts/pages/home/components/calendar";
+import ColorPicker from "@/ts/pages/home/components/calendar/event/components/edition_modal/color_picker";
 import DatePickers from "@/ts/pages/home/components/calendar/event/components/edition_modal/date_picker";
 import styles from "@/ts/pages/home/components/calendar/event/components/edition_modal/edition.module.css";
 import { EditionModalProps } from "@/ts/pages/home/components/calendar/type";
@@ -80,6 +81,13 @@ export default function EventEditionModal(props: EditionModalProps) {
           <div className={styles.dateInput}>
             <DatePickers
               {...props}
+              putForm={putForm}
+              setPutForm={setPutForm}
+              targetEvent={targetEvent}
+            />
+          </div>
+          <div className={styles.colorPalette}>
+            <ColorPicker
               putForm={putForm}
               setPutForm={setPutForm}
               targetEvent={targetEvent}

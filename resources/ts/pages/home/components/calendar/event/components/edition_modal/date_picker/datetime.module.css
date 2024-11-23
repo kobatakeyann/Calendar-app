@@ -32,10 +32,8 @@
 
 .switch {
   position: relative;
-  width: 95%;
-  height: 55%;
-  max-height: 30px;
-  max-width: 60px;
+  height: 30px;
+  width: 60px;
 }
 
 .switch input {

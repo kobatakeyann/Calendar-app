@@ -24,6 +24,12 @@ export interface DatePickerProps {
   targetEvent?: Event;
 }
 
+export interface colorPickerProps {
+  putForm: Event;
+  setPutForm: Dispatch<SetStateAction<Event>>;
+  targetEvent?: Event;
+}
+
 export type FetchContextType = {
   shouldFetch: boolean;
   setShouldFetch: Dispatch<SetStateAction<boolean>>;

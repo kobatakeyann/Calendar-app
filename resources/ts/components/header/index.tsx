@@ -82,7 +82,7 @@ function Header() {
         </nav>
       </div>
       <div className={styles.headerUserArea}>
-        <p className={styles.userName}>🎀 {userName} さん</p>
+        <p className={styles.userName}>🎀 {userName} </p>
         <button
           className={styles.logoutButton}
           onClick={handleLogout}

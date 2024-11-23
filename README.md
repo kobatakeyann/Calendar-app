@@ -1,5 +1,8 @@
 # Calendar-App
 
+カレンダーによるスケジュール管理アプリケーションです。様々なカラーテーマでカスタマイズしながら予定を管理できます。
+![](public/assets/calendar_image.png)
+
 ### アプリケーションの利用
 
 以下の手順でアプリケーションをセットアップ、利用してください。
@@ -31,19 +34,9 @@
    ・ `.env`ファイルの編集<br>
 
    ```
-   APP_MAINTENANCE_STORE=database
-   DB_CONNECTION=mysql
-
-   SESSION_DRIVER=database
-
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=calendar_app
-   DB_USERNAME=root
-   DB_PASSWORD=your_password
+   APP_KEY=your_issued_app_key
+   DB_PASSWORD=your_database_password
    ```
-
-   とする
 
 3. PHP ライブラリのインストール
    ```
@@ -55,8 +48,8 @@
    ```
 5. テーブルの作成
    ```
-   # 2で設定した名前のデータベースを作成[SQL query]
-   CREATE DATABASE your_database_name;
+   # SQL query
+   CREATE DATABASE calendar_app;
    # テーブルの作成
    php artisan migrate
    ```

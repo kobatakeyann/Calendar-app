@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "lint": "eslint -c .eslintrc.cjs ."
+    "lint": "eslint -c .eslintrc.cjs .",
+    "heroku-postbuild": "npm run build"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.6",

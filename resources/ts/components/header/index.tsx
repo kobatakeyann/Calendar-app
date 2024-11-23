@@ -1,6 +1,6 @@
 import AppIcon from "@/assets/images/app_icon.png";
 import styles from "@/ts/components/header/header.module.css";
-import { fetchUserName } from "@/ts/services/api/api";
+import { fetchUserName, logout } from "@/ts/services/api/api";
 import React, { useEffect, useState } from "react";
 
 function Header() {
@@ -15,6 +15,10 @@ function Header() {
     };
     fetchCurrentUserName();
   }, []);
+  const handleLogout = async () => {
+    await logout();
+    window.location.href = "/";
+  };
   return (
     <header className={styles.header}>
       <div className={styles.headerElementArea}>
@@ -79,7 +83,12 @@ function Header() {
       </div>
       <div className={styles.headerUserArea}>
         <p className={styles.userName}>🎀 {userName} さん</p>
-        <button className={styles.logoutButton}>Sign Out</button>
+        <button
+          className={styles.logoutButton}
+          onClick={handleLogout}
+        >
+          Sign Out
+        </button>
       </div>
     </header>
   );

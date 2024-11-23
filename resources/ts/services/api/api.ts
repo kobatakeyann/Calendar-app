@@ -84,3 +84,16 @@ export const fetchUserName = async (): Promise<string> => {
     throw error;
   }
 };
+
+export const logout = async () => {
+  try {
+    await axios.post("/logout", {
+      headers: {
+        "X-XSRF-TOKEN": getXSRFToken(),
+      },
+    });
+  } catch (error) {
+    console.error("API request error:", error);
+    throw error;
+  }
+};

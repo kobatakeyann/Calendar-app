@@ -42,7 +42,7 @@ function EventRegistrationModal(props: RegistrationModalProps) {
       props.setIsOpened(false);
       setShouldFetch(true);
     } catch {
-      console.error("Registration failed", console.error());
+      alert("タイトルまたは日時に誤りがあります");
     }
   };
   return (

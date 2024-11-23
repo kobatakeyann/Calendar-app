@@ -53,7 +53,7 @@ export default function EventEditionModal(props: EditionModalProps) {
       props.setIsOpened(false);
       setShouldFetch(true);
     } catch {
-      console.error("Update failed", console.error());
+      alert("タイトルまたは日時に誤りがあります");
     }
   };
 

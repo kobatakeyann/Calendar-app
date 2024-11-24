@@ -12,6 +12,7 @@ export default defineConfig({
         "resources/css/auth.css",
         "resources/js/auth.js",
         "resources/ts/app.tsx",
+        "resources/css/app.css",
       ],
       refresh: true,
     }),

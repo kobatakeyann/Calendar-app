@@ -17,8 +17,8 @@
 - シンプルなUI : 簡単に予定を作成、編集
 - カラーテーマ : 好みの色でカレンダーをカスタマイズ
 - メモ機能 : ひとことメモに最適
-  
-[Sign up](https://calendar-schedule-app-11c38fd6df5b.herokuapp.com/register)
+
+<a href="https://calendar-schedule-app-11c38fd6df5b.herokuapp.com/register" target="_blank" rel="noopener noreferrer">Sign up</a>
 
 ![](public/assets/calendar_image.png)
 

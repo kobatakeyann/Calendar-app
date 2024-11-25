@@ -84,6 +84,7 @@ body {
   }
   .fc .fc-daygrid-day-number {
     padding: 2px;
+    font-size: 12px;
   }
   .fc-daygrid-block-event .fc-event-time,
   .fc-daygrid-block-event .fc-event-title {

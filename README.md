@@ -18,7 +18,7 @@
 - カラーテーマ : 好みの色でカレンダーをカスタマイズ
 - メモ機能 : ひとことメモに最適
 
-<a href="https://calendar-schedule-app-11c38fd6df5b.herokuapp.com/register" target="_blank" rel="noopener noreferrer">Sign up</a>
+<a href="https://calendar-schedule-app-11c38fd6df5b.herokuapp.com/register" target="_blank">Sign up</a>
 
 ![](public/assets/calendar_image.png)
 

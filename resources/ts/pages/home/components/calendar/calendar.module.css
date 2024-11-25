@@ -19,3 +19,17 @@
   width: 100%;
   flex: 3;
 }
+
+@media screen and (max-width: 768px) {
+  .calendarArea {
+    width: 100%;
+    margin: 0;
+    flex-direction: column;
+  }
+  .calendar {
+    width: 100%;
+  }
+  .event {
+    width: 100%;
+  }
+}

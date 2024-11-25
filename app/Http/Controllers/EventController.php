@@ -58,6 +58,7 @@ class EventController extends Controller
                             ->where('end', '>=', $endOfDay);
                     });
             })
+            ->orderBy('start', 'asc')
             ->get();
 
         return response()->json($events);

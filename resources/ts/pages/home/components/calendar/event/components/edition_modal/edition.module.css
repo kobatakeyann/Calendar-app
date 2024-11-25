@@ -110,3 +110,14 @@ input[type="text"]:focus {
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* media responsive */
+@media screen and (max-width: 768px) {
+  #content {
+    top: 20%;
+    left: 5%;
+    width: 90%;
+    height: 70%;
+    padding: 1em;
+  }
+}

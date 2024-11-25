@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint -c .eslintrc.cjs ."
+    "lint": "eslint -c .eslintrc.cjs .",
+    "heroku-postbuild": "npm run build"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.6",

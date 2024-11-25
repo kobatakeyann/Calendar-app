@@ -1,11 +1,30 @@
-# Calendar-App
+# Calendar App - スケジュール管理アプリ
 
-カレンダーによるスケジュール管理アプリケーションです。様々なカラーテーマでカスタマイズしながら予定を管理できます。
+カレンダーによるスケジュール管理アプリケーションです。<br>
+様々なカラーテーマでカスタマイズしながら予定を管理できます。
+
+
+### 技術スタック
+
+[![My Skills](https://skillicons.dev/icons?i=react,ts,vite,php,laravel,mysql,heroku)](https://skillicons.dev)
+
+- React + TypeScript + Vite (frontend)
+- PHP + Laravel (backend)
+- Heroku (app Hosting, JawsDB MySQL)
+
+### Feature
+
+- シンプルなUI : 簡単に予定を作成、編集
+- カラーテーマ : 好みの色でカレンダーをカスタマイズ
+- メモ機能 : ひとことメモに最適
+
+<a href="https://calendar-schedule-app-11c38fd6df5b.herokuapp.com/register" target="_blank">Sign up</a>
+
 ![](public/assets/calendar_image.png)
 
-### アプリケーションの利用
+### 環境構築
 
-以下の手順でアプリケーションをセットアップ、利用してください。
+以下の手順で環境を構築、ソースコードを利用してください。
 
 #### 初期セットアップ
 
@@ -48,10 +67,8 @@
    ```
 5. テーブルの作成
    ```
-   # SQL query
-   CREATE DATABASE calendar_app;
-   # テーブルの作成
-   php artisan migrate
+   CREATE DATABASE calendar_app;  # SQL query
+   php artisan migrate            # テーブルの作成
    ```
 
 #### アプリケーションの起動

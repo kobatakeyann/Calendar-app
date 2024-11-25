@@ -8,7 +8,12 @@ export default defineConfig({
   },
   plugins: [
     laravel({
-      input: ["resources/ts/app.tsx"],
+      input: [
+        "resources/css/auth.css",
+        "resources/js/auth.js",
+        "resources/ts/app.tsx",
+        "resources/css/app.css",
+      ],
       refresh: true,
     }),
     react(),

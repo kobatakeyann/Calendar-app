@@ -104,3 +104,26 @@
   transition: 0.2s;
   color: #444654;
 }
+
+/* media responsive */
+@media screen and (max-width: 768px) {
+  .headerElementArea {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 80px;
+    flex: 1;
+  }
+
+  .headerFactorArea {
+    display: none;
+  }
+
+  .headerUserArea {
+    display: flex;
+    justify-content: right;
+    flex: 1;
+    gap: 8px;
+    padding-right: 24px;
+  }
+}

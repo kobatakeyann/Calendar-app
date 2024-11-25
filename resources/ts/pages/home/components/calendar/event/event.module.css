@@ -7,7 +7,7 @@
 
 /* bar area */
 .barArea {
-  padding: 12px 16px 12px 16px;
+  padding: 12px 16px;
   background-color: #88bbd1;
   display: flex;
   justify-content: space-between;
@@ -97,4 +97,23 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 10000;
+}
+
+/* media responsive */
+@media screen and (max-width: 768px) {
+  .eventArea {
+    padding: 0;
+  }
+  .barArea {
+    padding: 8px 12px;
+  }
+  .eventItem {
+    min-height: 64px;
+  }
+  .timeArea p {
+    font-size: 0.9em;
+  }
+  .eventName {
+    font-size: 16px;
+  }
 }

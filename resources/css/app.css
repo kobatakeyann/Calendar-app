@@ -75,3 +75,27 @@ body {
 .fc .fc-button:disabled {
   opacity: 1;
 }
+
+/* media responsive */
+@media screen and (max-width: 768px) {
+  .fc {
+    border: none;
+    height: 65vh;
+  }
+  .fc .fc-daygrid-day-number {
+    padding: 2px;
+  }
+  .fc-daygrid-block-event .fc-event-time,
+  .fc-daygrid-block-event .fc-event-title {
+    font-size: 0.8em;
+  }
+  .fc .fc-daygrid-body-balanced .fc-daygrid-day-events {
+    top: 24px;
+  }
+  .fc .fc-daygrid-event {
+    margin: 0;
+  }
+  .fc .fc-media-screen .fc-direction-ltr .fc-theme-standard {
+    min-height: 80vh;
+  }
+}
